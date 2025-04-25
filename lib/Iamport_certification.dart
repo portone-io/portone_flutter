@@ -48,7 +48,7 @@ class IamportCertification extends StatelessWidget {
     );
 
     var init =
-        tierCode == null
+        this.tierCode == null
             ? 'IMP.init("${this.userCode}");'
             : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
 
