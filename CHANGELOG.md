@@ -1,4 +1,7 @@
-## [0.12.0](https://github.com/portone-io/portone_flutter/tree/main)
+## [0.12.1](https://github.com/portone-io/portone_flutter/tree/main)
+- tierCode 결제창 호출 기능을 추가했습니다.
+
+## [0.12.0](https://github.com/portone-io/portone_flutter/tree/v0.12.0)
 - Flutter 3.28 컴파일 오류의 원인인 iamport_webview_flutter 에서 v1 android embedding 제거
 
 ## [0.11.0](https://github.com/portone-io/portone_flutter/tree/v0.11.0)
