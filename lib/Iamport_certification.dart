@@ -16,6 +16,7 @@ class IamportCertification extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Widget? initialChild;
   final String userCode;
+  final String? tierCode;
   final CertificationData data;
   final callback;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
@@ -26,6 +27,7 @@ class IamportCertification extends StatelessWidget {
     this.appBar,
     this.initialChild,
     required this.userCode,
+    this.tierCode,
     required this.data,
     required this.callback,
     this.gestureRecognizers,
@@ -39,8 +41,17 @@ class IamportCertification extends StatelessWidget {
       redirectUrl = this.data.mRedirectUrl!;
     }
 
-    IamportValidation validation =
-        IamportValidation.fromCertificationData(userCode, data, callback);
+    IamportValidation validation = IamportValidation.fromCertificationData(
+      userCode,
+      data,
+      callback,
+    );
+
+    var init =
+        tierCode == null
+            ? 'IMP.init("${this.userCode}");'
+            : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
+
     if (validation.getIsValid()) {
       return IamportWebView(
         type: ActionType.auth,
@@ -50,7 +61,7 @@ class IamportCertification extends StatelessWidget {
         customUserAgent: this.customUserAgent,
         executeJS: (WebViewController controller) {
           controller.evaluateJavascript('''
-            IMP.init("${this.userCode}");
+            $init
             IMP.certification(${jsonEncode(this.data.toJson())}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
