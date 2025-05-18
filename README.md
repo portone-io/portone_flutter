@@ -134,6 +134,26 @@ IOS에서 포트원 V1 결제연동 모듈을 사용하기 위해서는 `info.pl
 ...
 ```
 
+#### 4. PASS 앱 Universal Link 설정 (선택 사항)
+Push 알림 없이 PASS 앱(SKT PASS, KT 인증, U+인증)을 실행해 본인인증을 진행하고 앱으로 복귀하기 위해서는 Universal Link 설정이 필요합니다.
+
+##### 4.1 mRedirectUrl 설정
+본인인증 요청 시 `CertificationData` 객체의 `mRedirectUrl` 파라미터에 `UrlData.redirectUrl` 값을 설정해야 합니다. 다날의 경우, `mRedirectUrl` 설정 시 `carrier` 파라미터로 전달한 통신사 선택을 사용자가 변경할 수 없으므로 주의해주세요.
+
+```dart
+import 'package:portone_flutter/model/certification_data.dart';
+import 'package:portone_flutter/model/url_data.dart'; // UrlData import 추가
+
+// ...
+
+CertificationData data = CertificationData(
+  mRedirectUrl: UrlData.redirectUrl
+  // ... 기타 본인인증 데이터
+);
+
+// ...
+```
+
 ### Android 설정하기
 안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml](https://github.com/portone-io/portone_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13) 파일에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
 
