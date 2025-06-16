@@ -1,8 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:portone_flutter/model/pg/danal/danal.dart';
 import 'package:portone_flutter/model/pg/daou/daou.dart';
-import 'package:portone_flutter/model/pg/tosspayments/tosspayments.dart';
 import 'package:portone_flutter/model/pg/settle/settle.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:portone_flutter/model/pg/tosspayments/tosspayments.dart';
+
+import 'tossbrand_payment.dart/tossbrand_payment.dart';
 
 part 'bypass.g.dart';
 
@@ -22,6 +24,9 @@ class Bypass {
   Settle? settle;
   Danal? danal;
 
+  @JsonKey(name: "toss_brandpay")
+  TossBrandPayment? tossBrandPayment;
+
   Bypass({
     this.isCulturalExpense,
     this.cashReceiptType,
@@ -31,6 +36,7 @@ class Bypass {
     this.tosspayments,
     this.settle,
     this.danal,
+    this.tossBrandPayment,
   });
 
   factory Bypass.fromJson(Map<String, dynamic> json) => _$BypassFromJson(json);

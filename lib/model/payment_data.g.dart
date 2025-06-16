@@ -16,8 +16,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       customData: (json['custom_data'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      taxFree: json['tax_free'] as int?,
-      vat: json['vat'] as int?,
+      taxFree: (json['tax_free'] as num?)?.toInt(),
+      vat: (json['vat'] as num?)?.toInt(),
       currency: json['currency'] as String?,
       language: json['language'] as String?,
       buyerName: json['buyer_name'] as String?,
@@ -66,57 +66,55 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
           : Bypass.fromJson(json['bypass'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('pg', instance.pg);
-  val['pay_method'] = instance.payMethod;
-  writeNotNull('escrow', instance.escrow);
-  val['merchant_uid'] = instance.merchantUid;
-  writeNotNull('name', instance.name);
-  val['amount'] = instance.amount;
-  writeNotNull('custom_data', instance.customData);
-  writeNotNull('tax_free', instance.taxFree);
-  writeNotNull('vat', instance.vat);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('language', instance.language);
-  writeNotNull('buyer_name', instance.buyerName);
-  val['buyer_tel'] = instance.buyerTel;
-  writeNotNull('buyer_email', instance.buyerEmail);
-  writeNotNull('buyer_addr', instance.buyerAddr);
-  writeNotNull('buyer_postcode', instance.buyerPostcode);
-  writeNotNull('notice_url', instance.noticeUrl);
-  writeNotNull('display', PaymentData._cardQuotaToJson(instance.cardQuota));
-  writeNotNull('digital', instance.digital);
-  writeNotNull('vbank_due', instance.vbankDue);
-  writeNotNull('confirm_url', instance.confirmUrl);
-  writeNotNull('m_redirect_url', instance.mRedirectUrl);
-  val['app_scheme'] = instance.appScheme;
-  writeNotNull('biz_num', instance.bizNum);
-  writeNotNull('customer_id', instance.customerId);
-  writeNotNull('customer_uid', instance.customerUid);
-  writeNotNull('popup', instance.popup);
-  writeNotNull('naverUseCfm', instance.naverUseCfm);
-  writeNotNull('naverPopupMode', instance.naverPopupMode);
-  writeNotNull('naverProducts', instance.naverProducts);
-  writeNotNull('naverCultureBenefit', instance.naverCultureBenefit);
-  writeNotNull('naverProductCode', instance.naverProductCode);
-  writeNotNull('naverActionType', instance.naverActionType);
-  writeNotNull('naverPurchaserName', instance.naverPurchaserName);
-  writeNotNull('naverPurchaserBirthday', instance.naverPurchaserBirthday);
-  writeNotNull('naverChainId', instance.naverChainId);
-  writeNotNull('naverMerchantUserKey', instance.naverMerchantUserKey);
-  writeNotNull('naverInterface', instance.naverInterface);
-  writeNotNull('period', instance.period);
-  writeNotNull('company', instance.company);
-  writeNotNull('niceMobileV2', instance.niceMobileV2);
-  writeNotNull('kcpProducts', instance.kcpProducts);
-  writeNotNull('bypass', instance.bypass);
-  return val;
-}
+Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) =>
+    <String, dynamic>{
+      if (instance.pg case final value?) 'pg': value,
+      'pay_method': instance.payMethod,
+      if (instance.escrow case final value?) 'escrow': value,
+      'merchant_uid': instance.merchantUid,
+      if (instance.name case final value?) 'name': value,
+      'amount': instance.amount,
+      if (instance.customData case final value?) 'custom_data': value,
+      if (instance.taxFree case final value?) 'tax_free': value,
+      if (instance.vat case final value?) 'vat': value,
+      if (instance.currency case final value?) 'currency': value,
+      if (instance.language case final value?) 'language': value,
+      if (instance.buyerName case final value?) 'buyer_name': value,
+      'buyer_tel': instance.buyerTel,
+      if (instance.buyerEmail case final value?) 'buyer_email': value,
+      if (instance.buyerAddr case final value?) 'buyer_addr': value,
+      if (instance.buyerPostcode case final value?) 'buyer_postcode': value,
+      if (instance.noticeUrl case final value?) 'notice_url': value,
+      if (PaymentData._cardQuotaToJson(instance.cardQuota) case final value?)
+        'display': value,
+      if (instance.digital case final value?) 'digital': value,
+      if (instance.vbankDue case final value?) 'vbank_due': value,
+      if (instance.confirmUrl case final value?) 'confirm_url': value,
+      if (instance.mRedirectUrl case final value?) 'm_redirect_url': value,
+      'app_scheme': instance.appScheme,
+      if (instance.bizNum case final value?) 'biz_num': value,
+      if (instance.customerId case final value?) 'customer_id': value,
+      if (instance.customerUid case final value?) 'customer_uid': value,
+      if (instance.popup case final value?) 'popup': value,
+      if (instance.naverUseCfm case final value?) 'naverUseCfm': value,
+      if (instance.naverPopupMode case final value?) 'naverPopupMode': value,
+      if (instance.naverProducts case final value?) 'naverProducts': value,
+      if (instance.naverCultureBenefit case final value?)
+        'naverCultureBenefit': value,
+      if (instance.naverProductCode case final value?)
+        'naverProductCode': value,
+      if (instance.naverActionType case final value?) 'naverActionType': value,
+      if (instance.naverPurchaserName case final value?)
+        'naverPurchaserName': value,
+      if (instance.naverPurchaserBirthday case final value?)
+        'naverPurchaserBirthday': value,
+      if (instance.naverChainId case final value?) 'naverChainId': value,
+      if (instance.naverMerchantUserKey case final value?)
+        'naverMerchantUserKey': value,
+      if (instance.naverInterface case final value?) 'naverInterface': value,
+      if (instance.period case final value?) 'period': value,
+      if (instance.company case final value?) 'company': value,
+      if (instance.niceMobileV2 case final value?) 'niceMobileV2': value,
+      if (instance.kcpProducts case final value?) 'kcpProducts': value,
+      if (instance.bypass case final value?) 'bypass': value,
+    };

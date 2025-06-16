@@ -15,19 +15,13 @@ NaverInterface _$NaverInterfaceFromJson(Map<String, dynamic> json) =>
       merchantCustomCode2: json['merchantCustomCode2'] as String?,
     );
 
-Map<String, dynamic> _$NaverInterfaceToJson(NaverInterface instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('cpaInflowCode', instance.cpaInflowCode);
-  writeNotNull('naverInflowCode', instance.naverInflowCode);
-  writeNotNull('saClickId', instance.saClickId);
-  writeNotNull('merchantCustomCode1', instance.merchantCustomCode1);
-  writeNotNull('merchantCustomCode2', instance.merchantCustomCode2);
-  return val;
-}
+Map<String, dynamic> _$NaverInterfaceToJson(NaverInterface instance) =>
+    <String, dynamic>{
+      if (instance.cpaInflowCode case final value?) 'cpaInflowCode': value,
+      if (instance.naverInflowCode case final value?) 'naverInflowCode': value,
+      if (instance.saClickId case final value?) 'saClickId': value,
+      if (instance.merchantCustomCode1 case final value?)
+        'merchantCustomCode1': value,
+      if (instance.merchantCustomCode2 case final value?)
+        'merchantCustomCode2': value,
+    };

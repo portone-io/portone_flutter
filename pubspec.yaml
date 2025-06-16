@@ -13,7 +13,7 @@ dependencies:
   iamport_webview_flutter: 3.1.0
   url_launcher: ^6.0.4
   app_links: ^6.1.1
-  json_annotation: ^4.8.1
+  json_annotation: 4.9.0
 
 dev_dependencies:
   test: ^1.19.0

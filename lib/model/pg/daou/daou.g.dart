@@ -8,19 +8,10 @@ part of 'daou.dart';
 
 Daou _$DaouFromJson(Map<String, dynamic> json) => Daou(
       productCode: json['PRODUCTCODE'] as String?,
-      cashReceiptFlag: json['CASHRECEIPTFLAG'] as int,
+      cashReceiptFlag: (json['CASHRECEIPTFLAG'] as num).toInt(),
     );
 
-Map<String, dynamic> _$DaouToJson(Daou instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('PRODUCTCODE', instance.productCode);
-  val['CASHRECEIPTFLAG'] = instance.cashReceiptFlag;
-  return val;
-}
+Map<String, dynamic> _$DaouToJson(Daou instance) => <String, dynamic>{
+      if (instance.productCode case final value?) 'PRODUCTCODE': value,
+      'CASHRECEIPTFLAG': instance.cashReceiptFlag,
+    };

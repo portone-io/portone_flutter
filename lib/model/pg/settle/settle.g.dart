@@ -10,15 +10,6 @@ Settle _$SettleFromJson(Map<String, dynamic> json) => Settle(
       cashReceiptType: json['criPsblYn'] as String?,
     );
 
-Map<String, dynamic> _$SettleToJson(Settle instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('criPsblYn', instance.cashReceiptType);
-  return val;
-}
+Map<String, dynamic> _$SettleToJson(Settle instance) => <String, dynamic>{
+      if (instance.cashReceiptType case final value?) 'criPsblYn': value,
+    };

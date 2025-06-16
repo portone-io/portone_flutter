@@ -11,16 +11,9 @@ Tosspayments _$TosspaymentsFromJson(Map<String, dynamic> json) => Tosspayments(
       discountCode: json['discountCode'] as String?,
     );
 
-Map<String, dynamic> _$TosspaymentsToJson(Tosspayments instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('useInternationalCardOnly', instance.useInternationalCardOnly);
-  writeNotNull('discountCode', instance.discountCode);
-  return val;
-}
+Map<String, dynamic> _$TosspaymentsToJson(Tosspayments instance) =>
+    <String, dynamic>{
+      if (instance.useInternationalCardOnly case final value?)
+        'useInternationalCardOnly': value,
+      if (instance.discountCode case final value?) 'discountCode': value,
+    };
