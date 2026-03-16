@@ -73,11 +73,7 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 20,
-                      ),
-                    ),
+                    Padding(padding: EdgeInsets.only(left: 20)),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
@@ -106,9 +102,7 @@ class _HomeState extends State<Home> {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                    ),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
@@ -119,11 +113,7 @@ class _HomeState extends State<Home> {
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        icon: Icon(
-                          Icons.people,
-                          color: Colors.black,
-                          size: 25,
-                        ),
+                        icon: Icon(Icons.people, color: Colors.black, size: 25),
                         label: Text(
                           '본인인증 테스트',
                           style: TextStyle(
@@ -134,6 +124,100 @@ class _HomeState extends State<Home> {
                         ),
                         onPressed: () {
                           Get.toNamed('/certification-test');
+                        },
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.only(right: 20)),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '포트원 V2 테스트',
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        color: Colors.white,
+                        height: 2.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '포트원 V2 플러터 모듈 테스트 화면입니다.',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.white,
+                      height: 1.2,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(padding: EdgeInsets.only(left: 20)),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                          backgroundColor: Colors.indigo[300],
+                        ),
+                        icon: Icon(
+                          Icons.payment,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          'V2 결제',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Get.toNamed('/v2-payment-test');
+                        },
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                          backgroundColor: Colors.indigo[300],
+                        ),
+                        icon: Icon(Icons.people, color: Colors.white, size: 25),
+                        label: Text(
+                          'V2 본인인증',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Get.toNamed('/v2-identity-verification-test');
                         },
                       ),
                     ),
