@@ -12,6 +12,4 @@ enum NiceV2DirectShow {
   final String _value;
   const NiceV2DirectShow(String value) : _value = value;
   String toJson() => _value;
-  static NiceV2DirectShow fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

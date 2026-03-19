@@ -22,11 +22,4 @@ class PayletterGlobalIssueBillingKeyAndPayBypass {
     if (pginfo != null) 'pginfo': pginfo!,
     if (servicename != null) 'servicename': servicename!,
   };
-
-  static PayletterGlobalIssueBillingKeyAndPayBypass fromJson(
-    Map<String, dynamic> json,
-  ) => PayletterGlobalIssueBillingKeyAndPayBypass(
-    pginfo: json['pginfo'] as String?,
-    servicename: json['servicename'] as String?,
-  );
 }

@@ -11,6 +11,4 @@ enum SmartroV2OpenType {
   final String _value;
   const SmartroV2OpenType(String value) : _value = value;
   String toJson() => _value;
-  static SmartroV2OpenType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

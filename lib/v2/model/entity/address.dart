@@ -37,12 +37,4 @@ class Address {
     if (city != null) 'city': city!,
     if (province != null) 'province': province!,
   };
-
-  static Address fromJson(Map<String, dynamic> json) => Address(
-    country: json['country'] != null ? Country.fromJson(json['country']) : null,
-    addressLine1: json['addressLine1'] as String,
-    addressLine2: json['addressLine2'] as String,
-    city: json['city'] as String?,
-    province: json['province'] as String?,
-  );
 }

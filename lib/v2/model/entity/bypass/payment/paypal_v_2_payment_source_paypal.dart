@@ -12,14 +12,4 @@ class PaypalV2PaymentSourcePaypal {
     if (experienceContext != null)
       'experience_context': experienceContext!.toJson(),
   };
-
-  static PaypalV2PaymentSourcePaypal fromJson(Map<String, dynamic> json) =>
-      PaypalV2PaymentSourcePaypal(
-        experienceContext:
-            json['experience_context'] != null
-                ? PaypalV2PaymentSourcePaypalExperienceContext.fromJson(
-                  json['experience_context'],
-                )
-                : null,
-      );
 }

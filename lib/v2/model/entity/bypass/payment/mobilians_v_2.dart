@@ -93,26 +93,4 @@ class MobiliansV2Bypass {
     if (contractHidden != null) 'CONTRACT_HIDDEN': contractHidden!,
     if (emailHidden != null) 'EMAIL_HIDDEN': emailHidden!,
   };
-
-  static MobiliansV2Bypass fromJson(Map<String, dynamic> json) =>
-      MobiliansV2Bypass(
-        notiEmail: json['noti_email'] as String?,
-        cpLogo: json['cp_logo'] as String?,
-        entpLogo: json['entp_logo'] as String?,
-        cssType: json['css_type'] as String?,
-        cpUi: json['cp_ui'] as String?,
-        payOptions:
-            json['pay_options'] != null
-                ? MobiliansV2PayOptions.fromJson(json['pay_options'])
-                : null,
-        hiddenOptions:
-            json['hidden_options'] != null
-                ? MobiliansV2HiddenOptions.fromJson(json['hidden_options'])
-                : null,
-        logoYn: json['LOGO_YN'] as String?,
-        infoareaYn: json['INFOAREA_YN'] as String?,
-        footerYn: json['FOOTER_YN'] as String?,
-        contractHidden: json['CONTRACT_HIDDEN'] as String?,
-        emailHidden: json['EMAIL_HIDDEN'] as String?,
-      );
 }

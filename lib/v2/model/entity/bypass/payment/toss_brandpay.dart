@@ -31,18 +31,4 @@ class TossBrandpayPaymentBypass {
     if (discountCode != null) 'discountCode': discountCode!,
     if (methodId != null) 'methodId': methodId!,
   };
-
-  static TossBrandpayPaymentBypass fromJson(Map<String, dynamic> json) =>
-      TossBrandpayPaymentBypass(
-        brandpayOptions:
-            json['brandpayOptions'] != null
-                ? TossBrandpayBrandpayOptions.fromJson(json['brandpayOptions'])
-                : null,
-        widgetOptions:
-            json['widgetOptions'] != null
-                ? TossBrandpayWidgetOptions.fromJson(json['widgetOptions'])
-                : null,
-        discountCode: json['discountCode'] as String?,
-        methodId: json['methodId'] as String?,
-      );
 }

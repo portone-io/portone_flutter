@@ -44,15 +44,4 @@ class PaypalV2ShippingAddress {
     if (postalCode != null) 'postal_code': postalCode!,
     'country_code': countryCode.toJson(),
   };
-
-  static PaypalV2ShippingAddress fromJson(Map<String, dynamic> json) =>
-      PaypalV2ShippingAddress(
-        recipientName: json['recipient_name'] as String?,
-        line1: json['line1'] as String,
-        line2: json['line2'] as String?,
-        city: json['city'] as String,
-        state: json['state'] as String?,
-        postalCode: json['postal_code'] as String?,
-        countryCode: PaypalV2Country.fromJson(json['country_code']),
-      );
 }

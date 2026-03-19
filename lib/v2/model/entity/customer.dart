@@ -108,21 +108,4 @@ class Customer {
     if (firstNameKana != null) 'firstNameKana': firstNameKana!,
     if (lastNameKana != null) 'lastNameKana': lastNameKana!,
   };
-
-  static Customer fromJson(Map<String, dynamic> json) => Customer(
-    customerId: json['customerId'] as String?,
-    fullName: json['fullName'] as String?,
-    firstName: json['firstName'] as String?,
-    lastName: json['lastName'] as String?,
-    phoneNumber: json['phoneNumber'] as String?,
-    email: json['email'] as String?,
-    address: json['address'] != null ? Address.fromJson(json['address']) : null,
-    zipcode: json['zipcode'] as String?,
-    gender: json['gender'] != null ? Gender.fromJson(json['gender']) : null,
-    birthYear: json['birthYear'] as String?,
-    birthMonth: json['birthMonth'] as String?,
-    birthDay: json['birthDay'] as String?,
-    firstNameKana: json['firstNameKana'] as String?,
-    lastNameKana: json['lastNameKana'] as String?,
-  );
 }

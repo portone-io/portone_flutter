@@ -9,6 +9,4 @@ enum TossBrandpayWidgetOptionsMethodType {
   final String _value;
   const TossBrandpayWidgetOptionsMethodType(String value) : _value = value;
   String toJson() => _value;
-  static TossBrandpayWidgetOptionsMethodType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

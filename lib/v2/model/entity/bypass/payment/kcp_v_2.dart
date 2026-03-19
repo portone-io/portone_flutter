@@ -47,22 +47,4 @@ class KcpV2Bypass {
     if (siteName != null) 'site_name': siteName!,
     if (deliTerm != null) 'deli_term': deliTerm!,
   };
-
-  static KcpV2Bypass fromJson(Map<String, dynamic> json) => KcpV2Bypass(
-    skinIndx: json['skin_indx'] as String?,
-    siteLogo: json['site_logo'] as String?,
-    shopUserId: json['shop_user_id'] as String,
-    kcpPayTitle: json['kcp_pay_title'] as String?,
-    complexPntYn:
-        json['complex_pnt_yn'] != null
-            ? KcpV2ComplexPnt.fromJson(json['complex_pnt_yn'])
-            : null,
-    ptMemcorpCd: json['pt_memcorp_cd'] as String?,
-    dispTaxYn:
-        json['disp_tax_yn'] != null
-            ? KcpV2DispTax.fromJson(json['disp_tax_yn'])
-            : null,
-    siteName: json['site_name'] as String?,
-    deliTerm: json['deli_term'] as String?,
-  );
 }

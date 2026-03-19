@@ -9,6 +9,4 @@ enum NiceV2DisableScroll {
   final String _value;
   const NiceV2DisableScroll(String value) : _value = value;
   String toJson() => _value;
-  static NiceV2DisableScroll fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

@@ -22,15 +22,4 @@ class TosspayV2PaymentBypass {
     if (cashReceiptTradeOption != null)
       'cashReceiptTradeOption': cashReceiptTradeOption!.toJson(),
   };
-
-  static TosspayV2PaymentBypass fromJson(Map<String, dynamic> json) =>
-      TosspayV2PaymentBypass(
-        expiredTime: json['expiredTime'] as String?,
-        cashReceiptTradeOption:
-            json['cashReceiptTradeOption'] != null
-                ? TosspayV2CashReceiptTradeOption.fromJson(
-                  json['cashReceiptTradeOption'],
-                )
-                : null,
-      );
 }

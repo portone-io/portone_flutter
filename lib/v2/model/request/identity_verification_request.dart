@@ -84,27 +84,4 @@ class IdentityVerificationRequest {
     if (popup != null) 'popup': popup!.toJson(),
     if (iframe != null) 'iframe': iframe!.toJson(),
   };
-
-  static IdentityVerificationRequest fromJson(Map<String, dynamic> json) =>
-      IdentityVerificationRequest(
-        storeId: json['storeId'] as String,
-        identityVerificationId: json['identityVerificationId'] as String,
-        channelKey: json['channelKey'] as String?,
-        customer:
-            json['customer'] != null
-                ? Customer.fromJson(json['customer'])
-                : null,
-        windowType:
-            json['windowType'] != null
-                ? WindowTypes.fromJson(json['windowType'])
-                : null,
-        forceRedirect: json['forceRedirect'] as bool?,
-        customData: json['customData'] as String?,
-        bypass:
-            json['bypass'] != null
-                ? IdentityVerificationBypass.fromJson(json['bypass'])
-                : null,
-        popup: json['popup'] != null ? Popup.fromJson(json['popup']) : null,
-        iframe: json['iframe'] != null ? Iframe.fromJson(json['iframe']) : null,
-      );
 }

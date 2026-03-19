@@ -10,7 +10,4 @@ enum PaypalV2PaymentSourcePaypalExperienceContextLandingPage {
   const PaypalV2PaymentSourcePaypalExperienceContextLandingPage(String value)
     : _value = value;
   String toJson() => _value;
-  static PaypalV2PaymentSourcePaypalExperienceContextLandingPage fromJson(
-    String value,
-  ) => values.firstWhere((e) => e._value == value);
 }

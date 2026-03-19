@@ -17,11 +17,4 @@ class TossBrandpayWidgetOptionsUiPromotionSectionDescription {
     if (visible != null) 'visible': visible!,
     if (defaultOpen != null) 'defaultOpen': defaultOpen!,
   };
-
-  static TossBrandpayWidgetOptionsUiPromotionSectionDescription fromJson(
-    Map<String, dynamic> json,
-  ) => TossBrandpayWidgetOptionsUiPromotionSectionDescription(
-    visible: json['visible'] as bool?,
-    defaultOpen: json['defaultOpen'] as bool?,
-  );
 }

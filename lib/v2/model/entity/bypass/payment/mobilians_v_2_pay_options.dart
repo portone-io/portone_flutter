@@ -94,19 +94,4 @@ class MobiliansV2PayOptions {
     if (vaEscrow != null) 'va_escrow': vaEscrow!,
     if (vaEmail != null) 'va_email': vaEmail!,
   };
-
-  static MobiliansV2PayOptions fromJson(Map<String, dynamic> json) =>
-      MobiliansV2PayOptions(
-        cnPayAppUseYn: json['cn_pay_app_use_yn'] as String?,
-        cnPayAppUseCd: json['cn_pay_app_use_cd'] as String?,
-        epPayType: json['ep_pay_type'] as String?,
-        mcFixNo: json['mc_fix_no'] as String?,
-        mcSafeCall: json['mc_safe_call'] as String?,
-        mcSimplePay: json['mc_simple_pay'] as String?,
-        raEscrowPassword: json['ra_escrow_password'] as String?,
-        raDirect: json['ra_direct'] as String?,
-        vaCashReceipt: json['va_cash_receipt'] as String?,
-        vaEscrow: json['va_escrow'] as String?,
-        vaEmail: json['va_email'] as String?,
-      );
 }

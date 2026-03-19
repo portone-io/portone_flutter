@@ -26,14 +26,4 @@ class EximbayV2Settings {
     if (virtualaccountExpiryDate != null)
       'virtualaccount_expiry_date': virtualaccountExpiryDate!,
   };
-
-  static EximbayV2Settings fromJson(Map<String, dynamic> json) =>
-      EximbayV2Settings(
-        callFromApp:
-            json['call_from_app'] != null
-                ? EximbayV2SettingsCallFromApp.fromJson(json['call_from_app'])
-                : null,
-        issuerCountry: json['issuer_country'] as String?,
-        virtualaccountExpiryDate: json['virtualaccount_expiry_date'] as String?,
-      );
 }

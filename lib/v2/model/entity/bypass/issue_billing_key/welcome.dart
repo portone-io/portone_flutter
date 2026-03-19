@@ -15,10 +15,4 @@ class WelcomeIssueBillingKeyBypass {
     if (logoUrl != null) 'logo_url': logoUrl!,
     if (logo2Nd != null) 'logo_2nd': logo2Nd!,
   };
-
-  static WelcomeIssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      WelcomeIssueBillingKeyBypass(
-        logoUrl: json['logo_url'] as String?,
-        logo2Nd: json['logo_2nd'] as String?,
-      );
 }

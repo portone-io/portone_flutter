@@ -49,11 +49,4 @@ class TripleABypass {
     if (shippingDiscount != null) 'shipping_discount': shippingDiscount!,
     if (taxCost != null) 'tax_cost': taxCost!,
   };
-
-  static TripleABypass fromJson(Map<String, dynamic> json) => TripleABypass(
-    payerPoi: json['payer_poi'] as String?,
-    shippingCost: json['shipping_cost'] as int?,
-    shippingDiscount: json['shipping_discount'] as int?,
-    taxCost: json['tax_cost'] as int?,
-  );
 }

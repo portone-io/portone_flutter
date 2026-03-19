@@ -11,7 +11,4 @@ class KcpV2IdentityVerificationBypass {
   Map<String, dynamic> toJson() => {
     if (webSiteid != null) 'web_siteid': webSiteid!,
   };
-
-  static KcpV2IdentityVerificationBypass fromJson(Map<String, dynamic> json) =>
-      KcpV2IdentityVerificationBypass(webSiteid: json['web_siteid'] as String?);
 }

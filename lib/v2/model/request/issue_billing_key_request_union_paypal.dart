@@ -3,7 +3,4 @@
 
 class IssueBillingKeyRequestUnionPaypal {
   Map<String, dynamic> toJson() => {};
-  static IssueBillingKeyRequestUnionPaypal fromJson(
-    Map<String, dynamic> json,
-  ) => IssueBillingKeyRequestUnionPaypal();
 }

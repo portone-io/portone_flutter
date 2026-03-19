@@ -26,17 +26,4 @@ class SmartroV2PaymentBypass {
     if (skinColor != null) 'SkinColor': skinColor!.toJson(),
     if (openType != null) 'OpenType': openType!.toJson(),
   };
-
-  static SmartroV2PaymentBypass fromJson(Map<String, dynamic> json) =>
-      SmartroV2PaymentBypass(
-        goodsCnt: json['GoodsCnt'] as int?,
-        skinColor:
-            json['SkinColor'] != null
-                ? SmartroV2SkinColor.fromJson(json['SkinColor'])
-                : null,
-        openType:
-            json['OpenType'] != null
-                ? SmartroV2OpenType.fromJson(json['OpenType'])
-                : null,
-      );
 }

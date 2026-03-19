@@ -82,23 +82,4 @@ class StoreDetails {
     if (openingHours != null) 'openingHours': openingHours!.toJson(),
     if (contactName != null) 'contactName': contactName!,
   };
-
-  static StoreDetails fromJson(Map<String, dynamic> json) => StoreDetails(
-    ceoFullName: json['ceoFullName'] as String?,
-    phoneNumber: json['phoneNumber'] as String?,
-    address: json['address'] as String?,
-    zipcode: json['zipcode'] as String?,
-    email: json['email'] as String?,
-    businessName: json['businessName'] as String?,
-    businessRegistrationNumber: json['businessRegistrationNumber'] as String?,
-    storeName: json['storeName'] as String?,
-    storeNameShort: json['storeNameShort'] as String?,
-    storeNameEn: json['storeNameEn'] as String?,
-    storeNameKana: json['storeNameKana'] as String?,
-    openingHours:
-        json['openingHours'] != null
-            ? StoreDetailsOpeningHours.fromJson(json['openingHours'])
-            : null,
-    contactName: json['contactName'] as String?,
-  );
 }

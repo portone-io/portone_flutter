@@ -9,6 +9,4 @@ enum BillingKeyAndPayMethod {
   final String _value;
   const BillingKeyAndPayMethod(String value) : _value = value;
   String toJson() => _value;
-  static BillingKeyAndPayMethod fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

@@ -14,6 +14,4 @@ enum NiceV2DirectCoupon {
   final String _value;
   const NiceV2DirectCoupon(String value) : _value = value;
   String toJson() => _value;
-  static NiceV2DirectCoupon fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

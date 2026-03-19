@@ -101,32 +101,4 @@ class LoadIssueBillingKeyUIRequest {
     if (productType != null) 'productType': productType!.toJson(),
     if (bypass != null) 'bypass': bypass!.toJson(),
   };
-
-  static LoadIssueBillingKeyUIRequest fromJson(
-    Map<String, dynamic> json,
-  ) => LoadIssueBillingKeyUIRequest(
-    uiType: IssueBillingKeyUIType.fromJson(json['uiType']),
-    displayAmount: json['displayAmount'] as int?,
-    currency:
-        json['currency'] != null ? Currency.fromJson(json['currency']) : null,
-    storeId: json['storeId'] as String,
-    channelKey: json['channelKey'] as String,
-    billingKeyMethod: BillingKeyMethod.fromJson(json['billingKeyMethod']),
-    issueName: json['issueName'] as String?,
-    issueId: json['issueId'] as String?,
-    customer:
-        json['customer'] != null ? Customer.fromJson(json['customer']) : null,
-    locale: json['locale'] != null ? Locale.fromJson(json['locale']) : null,
-    customData: json['customData'],
-    appScheme: json['appScheme'] as String,
-    noticeUrls: (json['noticeUrls'] as List?)?.cast<String>(),
-    productType:
-        json['productType'] != null
-            ? ProductType.fromJson(json['productType'])
-            : null,
-    bypass:
-        json['bypass'] != null
-            ? LoadIssueBillingKeyUIBypass.fromJson(json['bypass'])
-            : null,
-  );
 }

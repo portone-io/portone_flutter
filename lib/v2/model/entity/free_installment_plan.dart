@@ -43,10 +43,4 @@ class FreeInstallmentPlan {
     'cardCompany': cardCompany.toJson(),
     'months': months,
   };
-
-  static FreeInstallmentPlan fromJson(Map<String, dynamic> json) =>
-      FreeInstallmentPlan(
-        cardCompany: CardCompany.fromJson(json['cardCompany']),
-        months: (json['months'] as List).cast<int>(),
-      );
 }

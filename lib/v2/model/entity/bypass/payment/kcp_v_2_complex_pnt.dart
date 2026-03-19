@@ -9,6 +9,4 @@ enum KcpV2ComplexPnt {
   final String _value;
   const KcpV2ComplexPnt(String value) : _value = value;
   String toJson() => _value;
-  static KcpV2ComplexPnt fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

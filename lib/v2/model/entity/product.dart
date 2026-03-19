@@ -53,14 +53,4 @@ class Product {
     if (tag != null) 'tag': tag!,
     if (link != null) 'link': link!,
   };
-
-  static Product fromJson(Map<String, dynamic> json) => Product(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    code: json['code'] as String?,
-    amount: json['amount'] as int,
-    quantity: json['quantity'] as int,
-    tag: json['tag'] as String?,
-    link: json['link'] as String?,
-  );
 }

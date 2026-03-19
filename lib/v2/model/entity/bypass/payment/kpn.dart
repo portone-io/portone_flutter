@@ -17,11 +17,4 @@ class KpnBypass {
     if (cardSelect != null)
       'CardSelect': cardSelect!.map((e) => e.toJson()).toList(),
   };
-
-  static KpnBypass fromJson(Map<String, dynamic> json) => KpnBypass(
-    cardSelect:
-        (json['CardSelect'] as List?)
-            ?.map((e) => KpnCardSelect.fromJson(e))
-            .toList(),
-  );
 }

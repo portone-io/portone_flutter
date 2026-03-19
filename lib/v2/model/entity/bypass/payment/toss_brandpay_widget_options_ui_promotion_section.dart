@@ -14,21 +14,4 @@ class TossBrandpayWidgetOptionsUiPromotionSection {
     if (summary != null) 'summary': summary!.toJson(),
     if (description != null) 'description': description!.toJson(),
   };
-
-  static TossBrandpayWidgetOptionsUiPromotionSection fromJson(
-    Map<String, dynamic> json,
-  ) => TossBrandpayWidgetOptionsUiPromotionSection(
-    summary:
-        json['summary'] != null
-            ? TossBrandpayWidgetOptionsUiPromotionSectionSummary.fromJson(
-              json['summary'],
-            )
-            : null,
-    description:
-        json['description'] != null
-            ? TossBrandpayWidgetOptionsUiPromotionSectionDescription.fromJson(
-              json['description'],
-            )
-            : null,
-  );
 }

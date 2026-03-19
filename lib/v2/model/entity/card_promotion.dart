@@ -23,9 +23,4 @@ class CardPromotion {
     'promotionId': promotionId,
     'discountAmount': discountAmount,
   };
-
-  static CardPromotion fromJson(Map<String, dynamic> json) => CardPromotion(
-    promotionId: json['promotionId'] as String,
-    discountAmount: json['discountAmount'] as int,
-  );
 }

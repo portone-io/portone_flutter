@@ -48,15 +48,4 @@ class EximbayV2BillTo {
     if (state != null) 'state': state!,
     if (street1 != null) 'street1': street1!,
   };
-
-  static EximbayV2BillTo fromJson(Map<String, dynamic> json) => EximbayV2BillTo(
-    city: json['city'] as String?,
-    country: json['country'] as String?,
-    firstName: json['first_name'] as String?,
-    lastName: json['last_name'] as String?,
-    phoneNumber: json['phone_number'] as String?,
-    postalCode: json['postal_code'] as String?,
-    state: json['state'] as String?,
-    street1: json['street1'] as String?,
-  );
 }

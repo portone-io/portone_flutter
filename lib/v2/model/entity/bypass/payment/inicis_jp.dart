@@ -13,11 +13,4 @@ class InicisJpBypass {
   Map<String, dynamic> toJson() => {
     if (paymentUi != null) 'paymentUI': paymentUi!.toJson(),
   };
-
-  static InicisJpBypass fromJson(Map<String, dynamic> json) => InicisJpBypass(
-    paymentUi:
-        json['paymentUI'] != null
-            ? InicisJpPaymentUI.fromJson(json['paymentUI'])
-            : null,
-  );
 }

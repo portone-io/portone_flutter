@@ -11,9 +11,4 @@ class TosspayV2IssueBillingKeyBypass {
   Map<String, dynamic> toJson() => {
     if (encryptedUserCi != null) 'encryptedUserCi': encryptedUserCi!,
   };
-
-  static TosspayV2IssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      TosspayV2IssueBillingKeyBypass(
-        encryptedUserCi: json['encryptedUserCi'] as String?,
-      );
 }

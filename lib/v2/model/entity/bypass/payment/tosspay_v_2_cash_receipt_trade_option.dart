@@ -19,6 +19,4 @@ enum TosspayV2CashReceiptTradeOption {
   final String _value;
   const TosspayV2CashReceiptTradeOption(String value) : _value = value;
   String toJson() => _value;
-  static TosspayV2CashReceiptTradeOption fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

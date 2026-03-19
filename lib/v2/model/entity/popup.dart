@@ -12,7 +12,4 @@ class Popup {
   Popup({this.center});
 
   Map<String, dynamic> toJson() => {if (center != null) 'center': center!};
-
-  static Popup fromJson(Map<String, dynamic> json) =>
-      Popup(center: json['center'] as bool?);
 }

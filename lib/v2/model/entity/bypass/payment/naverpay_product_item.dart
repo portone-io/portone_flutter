@@ -54,20 +54,4 @@ class NaverpayProductItem {
     if (sellerId != null) 'sellerId': sellerId!,
     'count': count,
   };
-
-  static NaverpayProductItem fromJson(Map<String, dynamic> json) =>
-      NaverpayProductItem(
-        categoryType: json['categoryType'] as String,
-        categoryId: json['categoryId'] as String,
-        uid: json['uid'] as String,
-        name: json['name'] as String,
-        payReferrer:
-            json['payReferrer'] != null
-                ? NaverpayProductItemPayReferrer.fromJson(json['payReferrer'])
-                : null,
-        startDate: json['startDate'] as String?,
-        endDate: json['endDate'] as String?,
-        sellerId: json['sellerId'] as String?,
-        count: json['count'] as int,
-      );
 }

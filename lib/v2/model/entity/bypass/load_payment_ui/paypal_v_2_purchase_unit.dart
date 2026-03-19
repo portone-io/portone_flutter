@@ -12,12 +12,4 @@ class PaypalV2PurchaseUnit {
   Map<String, dynamic> toJson() => {
     if (shipping != null) 'shipping': shipping!.toJson(),
   };
-
-  static PaypalV2PurchaseUnit fromJson(Map<String, dynamic> json) =>
-      PaypalV2PurchaseUnit(
-        shipping:
-            json['shipping'] != null
-                ? PaypalV2PurchaseUnitShipping.fromJson(json['shipping'])
-                : null,
-      );
 }

@@ -18,11 +18,4 @@ class EximbayV2Surcharge {
     if (quantity != null) 'quantity': quantity!,
     if (unitPrice != null) 'unit_price': unitPrice!,
   };
-
-  static EximbayV2Surcharge fromJson(Map<String, dynamic> json) =>
-      EximbayV2Surcharge(
-        name: json['name'] as String?,
-        quantity: json['quantity'] as String?,
-        unitPrice: json['unit_price'] as String?,
-      );
 }

@@ -11,7 +11,4 @@ class KakaopayPaymentBypass {
   Map<String, dynamic> toJson() => {
     if (customMessage != null) 'custom_message': customMessage!,
   };
-
-  static KakaopayPaymentBypass fromJson(Map<String, dynamic> json) =>
-      KakaopayPaymentBypass(customMessage: json['custom_message'] as String?);
 }

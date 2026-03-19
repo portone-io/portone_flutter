@@ -10,6 +10,4 @@ enum PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference {
     String value,
   ) : _value = value;
   String toJson() => _value;
-  static PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference
-  fromJson(String value) => values.firstWhere((e) => e._value == value);
 }

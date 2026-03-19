@@ -16,10 +16,4 @@ class TosspaymentsPaymentBypass {
     if (useInternationalCardOnly != null)
       'useInternationalCardOnly': useInternationalCardOnly!,
   };
-
-  static TosspaymentsPaymentBypass fromJson(Map<String, dynamic> json) =>
-      TosspaymentsPaymentBypass(
-        discountCode: json['discountCode'] as String?,
-        useInternationalCardOnly: json['useInternationalCardOnly'] as bool?,
-      );
 }

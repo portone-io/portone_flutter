@@ -13,12 +13,4 @@ class InicisV2IssueBillingKeyBypass {
   Map<String, dynamic> toJson() => {
     if (carduse != null) 'carduse': carduse!.toJson(),
   };
-
-  static InicisV2IssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      InicisV2IssueBillingKeyBypass(
-        carduse:
-            json['carduse'] != null
-                ? InicisV2CardUse.fromJson(json['carduse'])
-                : null,
-      );
 }

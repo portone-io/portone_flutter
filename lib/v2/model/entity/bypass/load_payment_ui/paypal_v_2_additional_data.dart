@@ -8,10 +8,4 @@ class PaypalV2AdditionalData {
   PaypalV2AdditionalData({required this.key, required this.value});
 
   Map<String, dynamic> toJson() => {'key': key, 'value': value};
-
-  static PaypalV2AdditionalData fromJson(Map<String, dynamic> json) =>
-      PaypalV2AdditionalData(
-        key: json['key'] as String,
-        value: json['value'] as String,
-      );
 }

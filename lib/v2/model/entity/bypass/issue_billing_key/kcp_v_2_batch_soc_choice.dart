@@ -12,6 +12,4 @@ enum KcpV2BatchSocChoice {
   final String _value;
   const KcpV2BatchSocChoice(String value) : _value = value;
   String toJson() => _value;
-  static KcpV2BatchSocChoice fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

@@ -40,29 +40,4 @@ class EximbayV2IssueBillingKeyAndPayBypass {
     if (shipTo != null) 'shipTo': shipTo!.toJson(),
     if (billTo != null) 'billTo': billTo!.toJson(),
   };
-
-  static EximbayV2IssueBillingKeyAndPayBypass fromJson(
-    Map<String, dynamic> json,
-  ) => EximbayV2IssueBillingKeyAndPayBypass(
-    payment:
-        json['payment'] != null
-            ? EximbayV2Payment.fromJson(json['payment'])
-            : null,
-    merchant:
-        json['merchant'] != null
-            ? EximbayV2Merchant.fromJson(json['merchant'])
-            : null,
-    surcharge:
-        (json['surcharge'] as List?)
-            ?.map((e) => EximbayV2Surcharge.fromJson(e))
-            .toList(),
-    shipTo:
-        json['shipTo'] != null
-            ? EximbayV2ShipTo.fromJson(json['shipTo'])
-            : null,
-    billTo:
-        json['billTo'] != null
-            ? EximbayV2BillTo.fromJson(json['billTo'])
-            : null,
-  );
 }

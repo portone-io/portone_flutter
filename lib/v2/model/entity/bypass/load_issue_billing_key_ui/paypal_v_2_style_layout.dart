@@ -9,6 +9,4 @@ enum PaypalV2StyleLayout {
   final String _value;
   const PaypalV2StyleLayout(String value) : _value = value;
   String toJson() => _value;
-  static PaypalV2StyleLayout fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

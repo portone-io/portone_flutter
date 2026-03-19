@@ -11,12 +11,4 @@ class PaypalV2PaymentSource {
   Map<String, dynamic> toJson() => {
     if (paypal != null) 'paypal': paypal!.toJson(),
   };
-
-  static PaypalV2PaymentSource fromJson(Map<String, dynamic> json) =>
-      PaypalV2PaymentSource(
-        paypal:
-            json['paypal'] != null
-                ? PaypalV2PaymentSourcePaypal.fromJson(json['paypal'])
-                : null,
-      );
 }

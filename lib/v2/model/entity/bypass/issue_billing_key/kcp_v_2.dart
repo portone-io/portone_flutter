@@ -13,12 +13,4 @@ class KcpV2IssueBillingKeyBypass {
   Map<String, dynamic> toJson() => {
     if (batchSocChoice != null) 'batch_soc_choice': batchSocChoice!.toJson(),
   };
-
-  static KcpV2IssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      KcpV2IssueBillingKeyBypass(
-        batchSocChoice:
-            json['batch_soc_choice'] != null
-                ? KcpV2BatchSocChoice.fromJson(json['batch_soc_choice'])
-                : null,
-      );
 }

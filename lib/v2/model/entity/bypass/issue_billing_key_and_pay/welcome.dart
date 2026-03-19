@@ -55,11 +55,4 @@ class WelcomeIssueBillingKeyAndPayBypass {
     if (acceptmethod != null) 'acceptmethod': acceptmethod!,
     if (pReserved != null) 'P_RESERVED': pReserved!,
   };
-
-  static WelcomeIssueBillingKeyAndPayBypass fromJson(
-    Map<String, dynamic> json,
-  ) => WelcomeIssueBillingKeyAndPayBypass(
-    acceptmethod: (json['acceptmethod'] as List?)?.cast<String>(),
-    pReserved: (json['P_RESERVED'] as List?)?.cast<String>(),
-  );
 }

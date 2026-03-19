@@ -56,40 +56,4 @@ class IssueBillingKeyBypass {
     if (kakaopay != null) 'kakaopay': kakaopay!.toJson(),
     if (tosspayV2 != null) 'tosspay_v2': tosspayV2!.toJson(),
   };
-
-  static IssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      IssueBillingKeyBypass(
-        inicisV2:
-            json['inicis_v2'] != null
-                ? InicisV2IssueBillingKeyBypass.fromJson(json['inicis_v2'])
-                : null,
-        kcpV2:
-            json['kcp_v2'] != null
-                ? KcpV2IssueBillingKeyBypass.fromJson(json['kcp_v2'])
-                : null,
-        smartroV2:
-            json['smartro_v2'] != null
-                ? SmartroV2IssueBillingKeyBypass.fromJson(json['smartro_v2'])
-                : null,
-        welcome:
-            json['welcome'] != null
-                ? WelcomeIssueBillingKeyBypass.fromJson(json['welcome'])
-                : null,
-        galaxia:
-            json['galaxia'] != null
-                ? GalaxiaIssueBillingKeyBypass.fromJson(json['galaxia'])
-                : null,
-        naverpay:
-            json['naverpay'] != null
-                ? NaverpayIssueBillingKeyBypass.fromJson(json['naverpay'])
-                : null,
-        kakaopay:
-            json['kakaopay'] != null
-                ? KakaopayPaymentBypass.fromJson(json['kakaopay'])
-                : null,
-        tosspayV2:
-            json['tosspay_v2'] != null
-                ? TosspayV2IssueBillingKeyBypass.fromJson(json['tosspay_v2'])
-                : null,
-      );
 }

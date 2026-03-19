@@ -10,6 +10,4 @@ enum WindowType {
   final String _value;
   const WindowType(String value) : _value = value;
   String toJson() => _value;
-  static WindowType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

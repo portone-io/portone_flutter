@@ -31,22 +31,4 @@ class PaypalV2PaymentBypass {
     if (additionalData != null)
       'additional_data': additionalData!.map((e) => e.toJson()).toList(),
   };
-
-  static PaypalV2PaymentBypass fromJson(
-    Map<String, dynamic> json,
-  ) => PaypalV2PaymentBypass(
-    purchaseUnits:
-        (json['purchase_units'] as List?)
-            ?.map((e) => PaypalV2PurchaseUnit.fromJson(e))
-            .toList(),
-    payer: json['payer'] != null ? PaypalV2Payer.fromJson(json['payer']) : null,
-    paymentSource:
-        json['payment_source'] != null
-            ? PaypalV2PaymentSource.fromJson(json['payment_source'])
-            : null,
-    additionalData:
-        (json['additional_data'] as List?)
-            ?.map((e) => PaypalV2AdditionalData.fromJson(e))
-            .toList(),
-  );
 }

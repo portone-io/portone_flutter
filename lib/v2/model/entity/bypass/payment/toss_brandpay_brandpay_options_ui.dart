@@ -30,25 +30,4 @@ class TossBrandpayBrandpayOptionsUi {
     if (labels != null) 'labels': labels!.toJson(),
     if (navigationBar != null) 'navigationBar': navigationBar!.toJson(),
   };
-
-  static TossBrandpayBrandpayOptionsUi fromJson(Map<String, dynamic> json) =>
-      TossBrandpayBrandpayOptionsUi(
-        highlightColor: json['highlightColor'] as String?,
-        buttonStyle:
-            json['buttonStyle'] != null
-                ? TossBrandpayBrandpayOptionsUiButtonStyle.fromJson(
-                  json['buttonStyle'],
-                )
-                : null,
-        labels:
-            json['labels'] != null
-                ? TossBrandpayBrandpayOptionsUiLabels.fromJson(json['labels'])
-                : null,
-        navigationBar:
-            json['navigationBar'] != null
-                ? TossBrandpayBrandpayOptionsUiNavigationBar.fromJson(
-                  json['navigationBar'],
-                )
-                : null,
-      );
 }

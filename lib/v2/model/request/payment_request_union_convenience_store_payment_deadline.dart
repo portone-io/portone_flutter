@@ -4,21 +4,6 @@
 /// **편의점결제 지불기한**
 sealed class PaymentRequestUnionConvenienceStorePaymentDeadline {
   Map<String, dynamic> toJson();
-  static PaymentRequestUnionConvenienceStorePaymentDeadline fromJson(
-    Map<String, dynamic> json,
-  ) {
-    if (json.containsKey('validHours'))
-      return PaymentRequestUnionConvenienceStorePaymentDeadlineValidHours.fromJson(
-        json,
-      );
-    if (json.containsKey('dueDate'))
-      return PaymentRequestUnionConvenienceStorePaymentDeadlineDueDate.fromJson(
-        json,
-      );
-    throw ArgumentError(
-      'Unknown PaymentRequestUnionConvenienceStorePaymentDeadline variant',
-    );
-  }
 }
 
 /// **유효 시간 (단위: 시간)**
@@ -26,11 +11,6 @@ class PaymentRequestUnionConvenienceStorePaymentDeadlineValidHours
     extends PaymentRequestUnionConvenienceStorePaymentDeadline {
   final int validHours;
   PaymentRequestUnionConvenienceStorePaymentDeadlineValidHours(this.validHours);
-  static PaymentRequestUnionConvenienceStorePaymentDeadlineValidHours fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionConvenienceStorePaymentDeadlineValidHours(
-    json['validHours'] as int,
-  );
   @override
   Map<String, dynamic> toJson() => {'validHours': validHours};
 }
@@ -42,11 +22,6 @@ class PaymentRequestUnionConvenienceStorePaymentDeadlineDueDate
     extends PaymentRequestUnionConvenienceStorePaymentDeadline {
   final String dueDate;
   PaymentRequestUnionConvenienceStorePaymentDeadlineDueDate(this.dueDate);
-  static PaymentRequestUnionConvenienceStorePaymentDeadlineDueDate fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionConvenienceStorePaymentDeadlineDueDate(
-    json['dueDate'] as String,
-  );
   @override
   Map<String, dynamic> toJson() => {'dueDate': dueDate};
 }

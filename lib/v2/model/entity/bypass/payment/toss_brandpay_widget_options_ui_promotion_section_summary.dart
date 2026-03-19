@@ -8,10 +8,4 @@ class TossBrandpayWidgetOptionsUiPromotionSectionSummary {
   TossBrandpayWidgetOptionsUiPromotionSectionSummary({this.visible});
 
   Map<String, dynamic> toJson() => {if (visible != null) 'visible': visible!};
-
-  static TossBrandpayWidgetOptionsUiPromotionSectionSummary fromJson(
-    Map<String, dynamic> json,
-  ) => TossBrandpayWidgetOptionsUiPromotionSectionSummary(
-    visible: json['visible'] as bool?,
-  );
 }

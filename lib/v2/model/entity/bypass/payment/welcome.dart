@@ -105,14 +105,4 @@ class WelcomePaymentBypass {
     if (pOnlyEasypaycode != null) 'P_ONLY_EASYPAYCODE': pOnlyEasypaycode!,
     if (pReserved != null) 'P_RESERVED': pReserved!,
   };
-
-  static WelcomePaymentBypass fromJson(Map<String, dynamic> json) =>
-      WelcomePaymentBypass(
-        logoUrl: json['logo_url'] as String?,
-        logo2Nd: json['logo_2nd'] as String?,
-        acceptmethod: (json['acceptmethod'] as List?)?.cast<String>(),
-        pCardOption: json['P_CARD_OPTION'] as String?,
-        pOnlyEasypaycode: json['P_ONLY_EASYPAYCODE'] as String?,
-        pReserved: (json['P_RESERVED'] as List?)?.cast<String>(),
-      );
 }

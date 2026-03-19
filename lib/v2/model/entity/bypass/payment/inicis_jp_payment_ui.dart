@@ -35,10 +35,4 @@ class InicisJpPaymentUI {
     if (colorTheme != null) 'colorTheme': colorTheme!,
     if (logoUrl != null) 'logoUrl': logoUrl!,
   };
-
-  static InicisJpPaymentUI fromJson(Map<String, dynamic> json) =>
-      InicisJpPaymentUI(
-        colorTheme: json['colorTheme'] as String?,
-        logoUrl: json['logoUrl'] as String?,
-      );
 }

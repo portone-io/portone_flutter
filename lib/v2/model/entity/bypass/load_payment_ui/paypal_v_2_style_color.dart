@@ -12,6 +12,4 @@ enum PaypalV2StyleColor {
   final String _value;
   const PaypalV2StyleColor(String value) : _value = value;
   String toJson() => _value;
-  static PaypalV2StyleColor fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

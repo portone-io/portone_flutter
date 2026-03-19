@@ -51,17 +51,4 @@ class InicisUnifiedIdentityVerificationBypass {
     if (diCode != null) 'DI_CODE': diCode!,
     if (frgndInfo != null) 'FRGNDInfo': frgndInfo!,
   };
-
-  static InicisUnifiedIdentityVerificationBypass fromJson(
-    Map<String, dynamic> json,
-  ) => InicisUnifiedIdentityVerificationBypass(
-    directAgency:
-        json['directAgency'] != null
-            ? InicisUnifiedDirectAgency.fromJson(json['directAgency'])
-            : null,
-    flgFixedUser: InicisUnifiedFlgFixedUser.fromJson(json['flgFixedUser']),
-    logoUrl: json['logoUrl'] as String?,
-    diCode: json['DI_CODE'] as String?,
-    frgndInfo: json['FRGNDInfo'] as String?,
-  );
 }

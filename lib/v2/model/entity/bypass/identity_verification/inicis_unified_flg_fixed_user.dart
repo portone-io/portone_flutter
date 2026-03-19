@@ -13,6 +13,4 @@ enum InicisUnifiedFlgFixedUser {
   final String _value;
   const InicisUnifiedFlgFixedUser(String value) : _value = value;
   String toJson() => _value;
-  static InicisUnifiedFlgFixedUser fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

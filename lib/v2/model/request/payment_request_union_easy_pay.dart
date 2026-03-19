@@ -121,36 +121,9 @@ class PaymentRequestUnionEasyPay {
     if (customerIdentifier != null) 'customerIdentifier': customerIdentifier!,
     if (useCardPoint != null) 'useCardPoint': useCardPoint!,
     if (availablePayMethods != null)
-      'availablePayMethods':
-          availablePayMethods!.map((e) => e.toJson()).toList(),
+      'availablePayMethods': availablePayMethods!
+          .map((e) => e.toJson())
+          .toList(),
     if (useInstallment != null) 'useInstallment': useInstallment!,
   };
-
-  static PaymentRequestUnionEasyPay fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionEasyPay(
-        easyPayProvider:
-            json['easyPayProvider'] != null
-                ? EasyPayProvider.fromJson(json['easyPayProvider'])
-                : null,
-        useFreeInterestFromMall: json['useFreeInterestFromMall'] as bool?,
-        availableCards:
-            (json['availableCards'] as List?)
-                ?.map((e) => CardCompany.fromJson(e))
-                .toList(),
-        installment:
-            json['installment'] != null
-                ? Installment.fromJson(json['installment'])
-                : null,
-        cashReceiptType:
-            json['cashReceiptType'] != null
-                ? CashReceiptType.fromJson(json['cashReceiptType'])
-                : null,
-        customerIdentifier: json['customerIdentifier'] as String?,
-        useCardPoint: json['useCardPoint'] as bool?,
-        availablePayMethods:
-            (json['availablePayMethods'] as List?)
-                ?.map((e) => EasyPayPaymentMethod.fromJson(e))
-                .toList(),
-        useInstallment: json['useInstallment'] as bool?,
-      );
 }

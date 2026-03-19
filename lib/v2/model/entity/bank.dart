@@ -276,6 +276,4 @@ enum Bank {
   final String _value;
   const Bank(String value) : _value = value;
   String toJson() => _value;
-  static Bank fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

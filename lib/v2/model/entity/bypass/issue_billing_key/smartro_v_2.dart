@@ -18,16 +18,4 @@ class SmartroV2IssueBillingKeyBypass {
     if (skinColor != null) 'SkinColor': skinColor!.toJson(),
     if (isPwdPass != null) 'IsPwdPass': isPwdPass!.toJson(),
   };
-
-  static SmartroV2IssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      SmartroV2IssueBillingKeyBypass(
-        skinColor:
-            json['SkinColor'] != null
-                ? SmartroV2SkinColor.fromJson(json['SkinColor'])
-                : null,
-        isPwdPass:
-            json['IsPwdPass'] != null
-                ? SmartroV2IsPwdPass.fromJson(json['IsPwdPass'])
-                : null,
-      );
 }

@@ -8,21 +8,6 @@
 /// `validHours`와 `dueDate` 중 하나만 지정합니다.
 sealed class PaymentRequestUnionVirtualAccountAccountExpiry {
   Map<String, dynamic> toJson();
-  static PaymentRequestUnionVirtualAccountAccountExpiry fromJson(
-    Map<String, dynamic> json,
-  ) {
-    if (json.containsKey('validHours'))
-      return PaymentRequestUnionVirtualAccountAccountExpiryValidHours.fromJson(
-        json,
-      );
-    if (json.containsKey('dueDate'))
-      return PaymentRequestUnionVirtualAccountAccountExpiryDueDate.fromJson(
-        json,
-      );
-    throw ArgumentError(
-      'Unknown PaymentRequestUnionVirtualAccountAccountExpiry variant',
-    );
-  }
 }
 
 /// **유효 시간**
@@ -32,11 +17,6 @@ class PaymentRequestUnionVirtualAccountAccountExpiryValidHours
     extends PaymentRequestUnionVirtualAccountAccountExpiry {
   final int validHours;
   PaymentRequestUnionVirtualAccountAccountExpiryValidHours(this.validHours);
-  static PaymentRequestUnionVirtualAccountAccountExpiryValidHours fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionVirtualAccountAccountExpiryValidHours(
-    json['validHours'] as int,
-  );
   @override
   Map<String, dynamic> toJson() => {'validHours': validHours};
 }
@@ -51,11 +31,6 @@ class PaymentRequestUnionVirtualAccountAccountExpiryDueDate
     extends PaymentRequestUnionVirtualAccountAccountExpiry {
   final String dueDate;
   PaymentRequestUnionVirtualAccountAccountExpiryDueDate(this.dueDate);
-  static PaymentRequestUnionVirtualAccountAccountExpiryDueDate fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionVirtualAccountAccountExpiryDueDate(
-    json['dueDate'] as String,
-  );
   @override
   Map<String, dynamic> toJson() => {'dueDate': dueDate};
 }

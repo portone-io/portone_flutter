@@ -75,6 +75,4 @@ enum CardCompany {
   final String _value;
   const CardCompany(String value) : _value = value;
   String toJson() => _value;
-  static CardCompany fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

@@ -32,28 +32,4 @@ class IssueBillingKeyAndPayBypass {
     if (eximbayV2 != null) 'eximbay_v2': eximbayV2!.toJson(),
     if (galaxia != null) 'galaxia': galaxia!.toJson(),
   };
-
-  static IssueBillingKeyAndPayBypass fromJson(Map<String, dynamic> json) =>
-      IssueBillingKeyAndPayBypass(
-        welcome:
-            json['welcome'] != null
-                ? WelcomeIssueBillingKeyAndPayBypass.fromJson(json['welcome'])
-                : null,
-        payletterGlobal:
-            json['payletter_global'] != null
-                ? PayletterGlobalIssueBillingKeyAndPayBypass.fromJson(
-                  json['payletter_global'],
-                )
-                : null,
-        eximbayV2:
-            json['eximbay_v2'] != null
-                ? EximbayV2IssueBillingKeyAndPayBypass.fromJson(
-                  json['eximbay_v2'],
-                )
-                : null,
-        galaxia:
-            json['galaxia'] != null
-                ? GalaxiaIssueBillingKeyAndPayBypass.fromJson(json['galaxia'])
-                : null,
-      );
 }

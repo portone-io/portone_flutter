@@ -12,6 +12,4 @@ enum ProductType {
   final String _value;
   const ProductType(String value) : _value = value;
   String toJson() => _value;
-  static ProductType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

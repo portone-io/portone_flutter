@@ -11,6 +11,4 @@ enum SmartroV2SkinColor {
   final String _value;
   const SmartroV2SkinColor(String value) : _value = value;
   String toJson() => _value;
-  static SmartroV2SkinColor fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

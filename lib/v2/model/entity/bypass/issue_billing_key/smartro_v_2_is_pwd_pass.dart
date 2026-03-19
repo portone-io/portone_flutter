@@ -12,6 +12,4 @@ enum SmartroV2IsPwdPass {
   final String _value;
   const SmartroV2IsPwdPass(String value) : _value = value;
   String toJson() => _value;
-  static SmartroV2IsPwdPass fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

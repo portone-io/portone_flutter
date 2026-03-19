@@ -28,15 +28,4 @@ class PaymentRequestUnionTransfer {
     if (customerIdentifier != null) 'customerIdentifier': customerIdentifier!,
     if (bankCode != null) 'bankCode': bankCode!.toJson(),
   };
-
-  static PaymentRequestUnionTransfer fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionTransfer(
-        cashReceiptType:
-            json['cashReceiptType'] != null
-                ? CashReceiptType.fromJson(json['cashReceiptType'])
-                : null,
-        customerIdentifier: json['customerIdentifier'] as String?,
-        bankCode:
-            json['bankCode'] != null ? Bank.fromJson(json['bankCode']) : null,
-      );
 }

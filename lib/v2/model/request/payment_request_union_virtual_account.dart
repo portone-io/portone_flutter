@@ -52,31 +52,4 @@ class PaymentRequestUnionVirtualAccount {
     if (availableBanks != null)
       'availableBanks': availableBanks!.map((e) => e.toJson()).toList(),
   };
-
-  static PaymentRequestUnionVirtualAccount fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionVirtualAccount(
-    cashReceiptType:
-        json['cashReceiptType'] != null
-            ? CashReceiptType.fromJson(json['cashReceiptType'])
-            : null,
-    customerIdentifier: json['customerIdentifier'] as String?,
-    fixedOption:
-        json['fixedOption'] != null
-            ? PaymentRequestUnionVirtualAccountFixedOption.fromJson(
-              json['fixedOption'],
-            )
-            : null,
-    bankCode: json['bankCode'] != null ? Bank.fromJson(json['bankCode']) : null,
-    accountExpiry:
-        json['accountExpiry'] != null
-            ? PaymentRequestUnionVirtualAccountAccountExpiry.fromJson(
-              json['accountExpiry'],
-            )
-            : null,
-    availableBanks:
-        (json['availableBanks'] as List?)
-            ?.map((e) => Bank.fromJson(e))
-            .toList(),
-  );
 }

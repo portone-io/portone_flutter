@@ -43,21 +43,4 @@ class PaypalV2LoadPaymentUIBypass {
     if (additionalData != null)
       'additional_data': additionalData!.map((e) => e.toJson()).toList(),
   };
-
-  static PaypalV2LoadPaymentUIBypass fromJson(
-    Map<String, dynamic> json,
-  ) => PaypalV2LoadPaymentUIBypass(
-    style: json['style'] != null ? PaypalV2Style.fromJson(json['style']) : null,
-    enableFunding: json['enable-funding'] as String?,
-    disableFunding: json['disable-funding'] as String?,
-    purchaseUnits:
-        (json['purchase_units'] as List?)
-            ?.map((e) => PaypalV2PurchaseUnit.fromJson(e))
-            .toList(),
-    payer: json['payer'] != null ? PaypalV2Payer.fromJson(json['payer']) : null,
-    additionalData:
-        (json['additional_data'] as List?)
-            ?.map((e) => PaypalV2AdditionalData.fromJson(e))
-            .toList(),
-  );
 }

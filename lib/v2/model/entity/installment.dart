@@ -81,19 +81,9 @@ class Installment {
 
   Map<String, dynamic> toJson() => {
     if (freeInstallmentPlans != null)
-      'freeInstallmentPlans':
-          freeInstallmentPlans!.map((e) => e.toJson()).toList(),
+      'freeInstallmentPlans': freeInstallmentPlans!
+          .map((e) => e.toJson())
+          .toList(),
     if (monthOption != null) 'monthOption': monthOption!.toJson(),
   };
-
-  static Installment fromJson(Map<String, dynamic> json) => Installment(
-    freeInstallmentPlans:
-        (json['freeInstallmentPlans'] as List?)
-            ?.map((e) => FreeInstallmentPlan.fromJson(e))
-            .toList(),
-    monthOption:
-        json['monthOption'] != null
-            ? InstallmentMonthOption.fromJson(json['monthOption'])
-            : null,
-  );
 }

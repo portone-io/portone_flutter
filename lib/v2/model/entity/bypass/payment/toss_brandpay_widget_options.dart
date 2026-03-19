@@ -20,19 +20,4 @@ class TossBrandpayWidgetOptions {
     if (methodId != null) 'methodId': methodId!,
     if (ui != null) 'ui': ui!.toJson(),
   };
-
-  static TossBrandpayWidgetOptions fromJson(Map<String, dynamic> json) =>
-      TossBrandpayWidgetOptions(
-        methodType:
-            json['methodType'] != null
-                ? TossBrandpayWidgetOptionsMethodType.fromJson(
-                  json['methodType'],
-                )
-                : null,
-        methodId: json['methodId'] as String?,
-        ui:
-            json['ui'] != null
-                ? TossBrandpayWidgetOptionsUi.fromJson(json['ui'])
-                : null,
-      );
 }

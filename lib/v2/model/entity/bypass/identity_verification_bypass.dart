@@ -23,22 +23,4 @@ class IdentityVerificationBypass {
     if (inicisUnified != null) 'inicisUnified': inicisUnified!.toJson(),
     if (kcpV2 != null) 'kcpV2': kcpV2!.toJson(),
   };
-
-  static IdentityVerificationBypass fromJson(Map<String, dynamic> json) =>
-      IdentityVerificationBypass(
-        danal:
-            json['danal'] != null
-                ? DanalIdentityVerificationBypass.fromJson(json['danal'])
-                : null,
-        inicisUnified:
-            json['inicisUnified'] != null
-                ? InicisUnifiedIdentityVerificationBypass.fromJson(
-                  json['inicisUnified'],
-                )
-                : null,
-        kcpV2:
-            json['kcpV2'] != null
-                ? KcpV2IdentityVerificationBypass.fromJson(json['kcpV2'])
-                : null,
-      );
 }

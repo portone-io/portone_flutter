@@ -40,12 +40,4 @@ class MobiliansV2HiddenOptions {
     if (productArea != null) 'product_area': productArea!,
     if (emailArea != null) 'email_area': emailArea!,
   };
-
-  static MobiliansV2HiddenOptions fromJson(Map<String, dynamic> json) =>
-      MobiliansV2HiddenOptions(
-        infoArea: json['info_area'] as String?,
-        footerArea: json['footer_area'] as String?,
-        productArea: json['product_area'] as String?,
-        emailArea: json['email_area'] as String?,
-      );
 }

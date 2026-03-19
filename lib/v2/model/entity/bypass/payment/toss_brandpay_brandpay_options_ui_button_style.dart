@@ -15,6 +15,4 @@ enum TossBrandpayBrandpayOptionsUiButtonStyle {
   final String _value;
   const TossBrandpayBrandpayOptionsUiButtonStyle(String value) : _value = value;
   String toJson() => _value;
-  static TossBrandpayBrandpayOptionsUiButtonStyle fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

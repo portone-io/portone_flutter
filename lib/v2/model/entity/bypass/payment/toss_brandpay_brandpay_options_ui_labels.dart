@@ -10,10 +10,4 @@ class TossBrandpayBrandpayOptionsUiLabels {
   Map<String, dynamic> toJson() => {
     if (oneTouchPay != null) 'oneTouchPay': oneTouchPay!,
   };
-
-  static TossBrandpayBrandpayOptionsUiLabels fromJson(
-    Map<String, dynamic> json,
-  ) => TossBrandpayBrandpayOptionsUiLabels(
-    oneTouchPay: json['oneTouchPay'] as String?,
-  );
 }

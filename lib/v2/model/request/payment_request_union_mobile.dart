@@ -20,14 +20,4 @@ class PaymentRequestUnionMobile {
     if (avaliableCarriers != null)
       'avaliableCarriers': avaliableCarriers!.map((e) => e.toJson()).toList(),
   };
-
-  static PaymentRequestUnionMobile fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionMobile(
-        carrier:
-            json['carrier'] != null ? Carrier.fromJson(json['carrier']) : null,
-        avaliableCarriers:
-            (json['avaliableCarriers'] as List?)
-                ?.map((e) => Carrier.fromJson(e))
-                .toList(),
-      );
 }

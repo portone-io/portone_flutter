@@ -12,14 +12,4 @@ class TossBrandpayWidgetOptionsUi {
     if (promotionSection != null)
       'promotionSection': promotionSection!.toJson(),
   };
-
-  static TossBrandpayWidgetOptionsUi fromJson(Map<String, dynamic> json) =>
-      TossBrandpayWidgetOptionsUi(
-        promotionSection:
-            json['promotionSection'] != null
-                ? TossBrandpayWidgetOptionsUiPromotionSection.fromJson(
-                  json['promotionSection'],
-                )
-                : null,
-      );
 }

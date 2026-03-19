@@ -110,6 +110,4 @@ enum Locale {
   final String _value;
   const Locale(String value) : _value = value;
   String toJson() => _value;
-  static Locale fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

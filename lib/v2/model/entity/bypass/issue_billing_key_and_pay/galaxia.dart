@@ -11,10 +11,4 @@ class GalaxiaIssueBillingKeyAndPayBypass {
   Map<String, dynamic> toJson() => {
     if (itemCode != null) 'ITEM_CODE': itemCode!,
   };
-
-  static GalaxiaIssueBillingKeyAndPayBypass fromJson(
-    Map<String, dynamic> json,
-  ) => GalaxiaIssueBillingKeyAndPayBypass(
-    itemCode: json['ITEM_CODE'] as String?,
-  );
 }

@@ -12,6 +12,4 @@ enum InicisV2CardUse {
   final String _value;
   const InicisV2CardUse(String value) : _value = value;
   String toJson() => _value;
-  static InicisV2CardUse fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

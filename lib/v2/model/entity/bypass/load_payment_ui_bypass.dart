@@ -12,12 +12,4 @@ class LoadPaymentUIBypass {
   Map<String, dynamic> toJson() => {
     if (paypalV2 != null) 'paypal_v2': paypalV2!.toJson(),
   };
-
-  static LoadPaymentUIBypass fromJson(Map<String, dynamic> json) =>
-      LoadPaymentUIBypass(
-        paypalV2:
-            json['paypal_v2'] != null
-                ? PaypalV2LoadPaymentUIBypass.fromJson(json['paypal_v2'])
-                : null,
-      );
 }

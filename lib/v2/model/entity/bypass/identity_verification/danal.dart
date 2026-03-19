@@ -36,11 +36,4 @@ class DanalIdentityVerificationBypass {
     if (agelimit != null) 'AGELIMIT': agelimit!,
     if (isCarrier != null) 'IsCarrier': isCarrier!,
   };
-
-  static DanalIdentityVerificationBypass fromJson(Map<String, dynamic> json) =>
-      DanalIdentityVerificationBypass(
-        cptitle: json['CPTITLE'] as String?,
-        agelimit: json['AGELIMIT'] as int?,
-        isCarrier: json['IsCarrier'] as String?,
-      );
 }

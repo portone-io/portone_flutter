@@ -10,10 +10,4 @@ class PaypalV2PayerTaxInfo {
   PaypalV2PayerTaxInfo({required this.taxId, required this.taxIdType});
 
   Map<String, dynamic> toJson() => {'tax_id': taxId, 'tax_id_type': taxIdType};
-
-  static PaypalV2PayerTaxInfo fromJson(Map<String, dynamic> json) =>
-      PaypalV2PayerTaxInfo(
-        taxId: json['tax_id'] as String,
-        taxIdType: json['tax_id_type'] as String,
-      );
 }

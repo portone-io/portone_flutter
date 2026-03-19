@@ -26,18 +26,4 @@ class PaypalV2LoadIssueBillingKeyUIBypass {
     if (additionalData != null)
       'additional_data': additionalData!.map((e) => e.toJson()).toList(),
   };
-
-  static PaypalV2LoadIssueBillingKeyUIBypass fromJson(
-    Map<String, dynamic> json,
-  ) => PaypalV2LoadIssueBillingKeyUIBypass(
-    style: json['style'] != null ? PaypalV2Style.fromJson(json['style']) : null,
-    shippingAddress:
-        json['shipping_address'] != null
-            ? PaypalV2ShippingAddress.fromJson(json['shipping_address'])
-            : null,
-    additionalData:
-        (json['additional_data'] as List?)
-            ?.map((e) => PaypalV2AdditionalData.fromJson(e))
-            .toList(),
-  );
 }

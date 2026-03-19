@@ -10,7 +10,4 @@ class HyphenBypass {
   Map<String, dynamic> toJson() => {
     if (designCd != null) 'designCd': designCd!,
   };
-
-  static HyphenBypass fromJson(Map<String, dynamic> json) =>
-      HyphenBypass(designCd: json['designCd'] as String?);
 }

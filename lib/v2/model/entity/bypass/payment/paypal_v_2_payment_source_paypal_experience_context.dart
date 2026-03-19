@@ -28,28 +28,4 @@ class PaypalV2PaymentSourcePaypalExperienceContext {
     if (paymentMethodPreference != null)
       'payment_method_preference': paymentMethodPreference!.toJson(),
   };
-
-  static PaypalV2PaymentSourcePaypalExperienceContext fromJson(
-    Map<String, dynamic> json,
-  ) => PaypalV2PaymentSourcePaypalExperienceContext(
-    brandName: json['brand_name'] as String?,
-    shippingPreference:
-        json['shipping_preference'] != null
-            ? PaypalV2PaymentSourcePaypalExperienceContextShippingPreference.fromJson(
-              json['shipping_preference'],
-            )
-            : null,
-    landingPage:
-        json['landing_page'] != null
-            ? PaypalV2PaymentSourcePaypalExperienceContextLandingPage.fromJson(
-              json['landing_page'],
-            )
-            : null,
-    paymentMethodPreference:
-        json['payment_method_preference'] != null
-            ? PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference.fromJson(
-              json['payment_method_preference'],
-            )
-            : null,
-  );
 }

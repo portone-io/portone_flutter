@@ -3,6 +3,4 @@
 
 class PaymentRequestUnionAlipay {
   Map<String, dynamic> toJson() => {};
-  static PaymentRequestUnionAlipay fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionAlipay();
 }

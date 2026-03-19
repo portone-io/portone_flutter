@@ -18,9 +18,4 @@ class WindowTypes {
     if (pc != null) 'pc': pc!.toJson(),
     if (mobile != null) 'mobile': mobile!.toJson(),
   };
-
-  static WindowTypes fromJson(Map<String, dynamic> json) => WindowTypes(
-    pc: json['pc'] != null ? WindowType.fromJson(json['pc']) : null,
-    mobile: json['mobile'] != null ? WindowType.fromJson(json['mobile']) : null,
-  );
 }

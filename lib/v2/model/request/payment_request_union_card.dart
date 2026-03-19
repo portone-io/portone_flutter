@@ -102,28 +102,4 @@ class PaymentRequestUnionCard {
     if (useInstallment != null) 'useInstallment': useInstallment!,
     if (cardPromotion != null) 'cardPromotion': cardPromotion!.toJson(),
   };
-
-  static PaymentRequestUnionCard fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionCard(
-        cardCompany:
-            json['cardCompany'] != null
-                ? CardCompany.fromJson(json['cardCompany'])
-                : null,
-        availableCards:
-            (json['availableCards'] as List?)
-                ?.map((e) => CardCompany.fromJson(e))
-                .toList(),
-        useFreeInterestFromMall: json['useFreeInterestFromMall'] as bool?,
-        installment:
-            json['installment'] != null
-                ? Installment.fromJson(json['installment'])
-                : null,
-        useCardPoint: json['useCardPoint'] as bool?,
-        useAppCardOnly: json['useAppCardOnly'] as bool?,
-        useInstallment: json['useInstallment'] as bool?,
-        cardPromotion:
-            json['cardPromotion'] != null
-                ? CardPromotion.fromJson(json['cardPromotion'])
-                : null,
-      );
 }

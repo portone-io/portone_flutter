@@ -38,15 +38,4 @@ class NaverpaySubMerchantInfo {
     'subMerchantTelephoneNo': subMerchantTelephoneNo,
     'subMerchantCustomerServiceUrl': subMerchantCustomerServiceUrl,
   };
-
-  static NaverpaySubMerchantInfo fromJson(Map<String, dynamic> json) =>
-      NaverpaySubMerchantInfo(
-        subMerchantName: json['subMerchantName'] as String,
-        subMerchantId: json['subMerchantId'] as String,
-        subMerchantBusinessNo: json['subMerchantBusinessNo'] as String,
-        subMerchantPayId: json['subMerchantPayId'] as String,
-        subMerchantTelephoneNo: json['subMerchantTelephoneNo'] as String,
-        subMerchantCustomerServiceUrl:
-            json['subMerchantCustomerServiceUrl'] as String,
-      );
 }

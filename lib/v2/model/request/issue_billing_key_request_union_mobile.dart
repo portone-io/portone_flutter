@@ -15,14 +15,4 @@ class IssueBillingKeyRequestUnionMobile {
     if (avaliableCarriers != null)
       'avaliableCarriers': avaliableCarriers!.map((e) => e.toJson()).toList(),
   };
-
-  static IssueBillingKeyRequestUnionMobile fromJson(
-    Map<String, dynamic> json,
-  ) => IssueBillingKeyRequestUnionMobile(
-    carrier: json['carrier'] != null ? Carrier.fromJson(json['carrier']) : null,
-    avaliableCarriers:
-        (json['avaliableCarriers'] as List?)
-            ?.map((e) => Carrier.fromJson(e))
-            .toList(),
-  );
 }

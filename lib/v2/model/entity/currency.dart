@@ -541,6 +541,4 @@ enum Currency {
   final String _value;
   const Currency(String value) : _value = value;
   String toJson() => _value;
-  static Currency fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

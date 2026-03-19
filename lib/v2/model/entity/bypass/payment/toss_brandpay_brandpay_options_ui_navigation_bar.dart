@@ -14,11 +14,4 @@ class TossBrandpayBrandpayOptionsUiNavigationBar {
     if (visible != null) 'visible': visible!,
     if (paddingTop != null) 'paddingTop': paddingTop!,
   };
-
-  static TossBrandpayBrandpayOptionsUiNavigationBar fromJson(
-    Map<String, dynamic> json,
-  ) => TossBrandpayBrandpayOptionsUiNavigationBar(
-    visible: json['visible'] as bool?,
-    paddingTop: json['paddingTop'] as int?,
-  );
 }

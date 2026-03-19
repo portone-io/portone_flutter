@@ -3,6 +3,4 @@
 
 class PaymentRequestUnionPaypal {
   Map<String, dynamic> toJson() => {};
-  static PaymentRequestUnionPaypal fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionPaypal();
 }

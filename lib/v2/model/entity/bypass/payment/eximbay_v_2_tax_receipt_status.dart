@@ -9,6 +9,4 @@ enum EximbayV2TaxReceiptStatus {
   final String _value;
   const EximbayV2TaxReceiptStatus(String value) : _value = value;
   String toJson() => _value;
-  static EximbayV2TaxReceiptStatus fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

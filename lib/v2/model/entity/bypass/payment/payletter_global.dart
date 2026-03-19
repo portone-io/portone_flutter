@@ -22,10 +22,4 @@ class PayletterGlobalBypass {
     if (pginfo != null) 'pginfo': pginfo!,
     if (servicename != null) 'servicename': servicename!,
   };
-
-  static PayletterGlobalBypass fromJson(Map<String, dynamic> json) =>
-      PayletterGlobalBypass(
-        pginfo: json['pginfo'] as String?,
-        servicename: json['servicename'] as String?,
-      );
 }

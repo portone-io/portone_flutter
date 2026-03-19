@@ -15,10 +15,4 @@ class StoreDetailsOpeningHours {
     if (open != null) 'open': open!,
     if (close != null) 'close': close!,
   };
-
-  static StoreDetailsOpeningHours fromJson(Map<String, dynamic> json) =>
-      StoreDetailsOpeningHours(
-        open: json['open'] as String?,
-        close: json['close'] as String?,
-      );
 }

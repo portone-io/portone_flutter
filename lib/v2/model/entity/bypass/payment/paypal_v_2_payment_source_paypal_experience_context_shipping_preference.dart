@@ -11,6 +11,4 @@ enum PaypalV2PaymentSourcePaypalExperienceContextShippingPreference {
     String value,
   ) : _value = value;
   String toJson() => _value;
-  static PaypalV2PaymentSourcePaypalExperienceContextShippingPreference
-  fromJson(String value) => values.firstWhere((e) => e._value == value);
 }

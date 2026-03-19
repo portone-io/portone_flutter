@@ -15,10 +15,4 @@ class EximbayV2Merchant {
     if (shop != null) 'shop': shop!,
     if (partnerCode != null) 'partner_code': partnerCode!,
   };
-
-  static EximbayV2Merchant fromJson(Map<String, dynamic> json) =>
-      EximbayV2Merchant(
-        shop: json['shop'] as String?,
-        partnerCode: json['partner_code'] as String?,
-      );
 }

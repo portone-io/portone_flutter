@@ -14,13 +14,4 @@ class PaymentRequestUnionGiftCertificate {
     if (giftCertificateType != null)
       'giftCertificateType': giftCertificateType!.toJson(),
   };
-
-  static PaymentRequestUnionGiftCertificate fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionGiftCertificate(
-    giftCertificateType:
-        json['giftCertificateType'] != null
-            ? GiftCertificateType.fromJson(json['giftCertificateType'])
-            : null,
-  );
 }

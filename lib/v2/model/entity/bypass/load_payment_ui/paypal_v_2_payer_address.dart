@@ -35,14 +35,4 @@ class PaypalV2PayerAddress {
     if (postalCode != null) 'postal_code': postalCode!,
     'country_code': countryCode.toJson(),
   };
-
-  static PaypalV2PayerAddress fromJson(Map<String, dynamic> json) =>
-      PaypalV2PayerAddress(
-        addressLine1: json['address_line_1'] as String?,
-        addressLine2: json['address_line_2'] as String?,
-        adminArea1: json['admin_area_1'] as String?,
-        adminArea2: json['admin_area_2'] as String?,
-        postalCode: json['postal_code'] as String?,
-        countryCode: Country.fromJson(json['country_code']),
-      );
 }

@@ -23,6 +23,4 @@ enum TransactionType {
   final String _value;
   const TransactionType(String value) : _value = value;
   String toJson() => _value;
-  static TransactionType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

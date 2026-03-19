@@ -9,7 +9,4 @@ class Iframe {
   Iframe({this.dim});
 
   Map<String, dynamic> toJson() => {if (dim != null) 'dim': dim!};
-
-  static Iframe fromJson(Map<String, dynamic> json) =>
-      Iframe(dim: json['dim'] as bool?);
 }

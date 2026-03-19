@@ -25,24 +25,8 @@ class IssueBillingKeyRequestUnionEasyPay {
       'availableCards': availableCards!.map((e) => e.toJson()).toList(),
     if (easyPayProvider != null) 'easyPayProvider': easyPayProvider!.toJson(),
     if (availablePayMethods != null)
-      'availablePayMethods':
-          availablePayMethods!.map((e) => e.toJson()).toList(),
+      'availablePayMethods': availablePayMethods!
+          .map((e) => e.toJson())
+          .toList(),
   };
-
-  static IssueBillingKeyRequestUnionEasyPay fromJson(
-    Map<String, dynamic> json,
-  ) => IssueBillingKeyRequestUnionEasyPay(
-    availableCards:
-        (json['availableCards'] as List?)
-            ?.map((e) => CardCompany.fromJson(e))
-            .toList(),
-    easyPayProvider:
-        json['easyPayProvider'] != null
-            ? EasyPayProvider.fromJson(json['easyPayProvider'])
-            : null,
-    availablePayMethods:
-        (json['availablePayMethods'] as List?)
-            ?.map((e) => EasyPayPaymentMethod.fromJson(e))
-            .toList(),
-  );
 }

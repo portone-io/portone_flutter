@@ -10,12 +10,4 @@ class TossBrandpayBrandpayOptions {
   TossBrandpayBrandpayOptions({this.ui});
 
   Map<String, dynamic> toJson() => {if (ui != null) 'ui': ui!.toJson()};
-
-  static TossBrandpayBrandpayOptions fromJson(Map<String, dynamic> json) =>
-      TossBrandpayBrandpayOptions(
-        ui:
-            json['ui'] != null
-                ? TossBrandpayBrandpayOptionsUi.fromJson(json['ui'])
-                : null,
-      );
 }

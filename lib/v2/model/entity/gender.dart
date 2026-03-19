@@ -15,6 +15,4 @@ enum Gender {
   final String _value;
   const Gender(String value) : _value = value;
   String toJson() => _value;
-  static Gender fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

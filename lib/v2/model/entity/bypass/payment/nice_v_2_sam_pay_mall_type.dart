@@ -12,6 +12,4 @@ enum NiceV2SamPayMallType {
   final String _value;
   const NiceV2SamPayMallType(String value) : _value = value;
   String toJson() => _value;
-  static NiceV2SamPayMallType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

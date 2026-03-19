@@ -15,10 +15,4 @@ class NaverpayIssueBillingKeyBypass {
     if (subMerchantName != null) 'subMerchantName': subMerchantName!,
     if (subMerchantId != null) 'subMerchantId': subMerchantId!,
   };
-
-  static NaverpayIssueBillingKeyBypass fromJson(Map<String, dynamic> json) =>
-      NaverpayIssueBillingKeyBypass(
-        subMerchantName: json['subMerchantName'] as String?,
-        subMerchantId: json['subMerchantId'] as String?,
-      );
 }

@@ -13,11 +13,4 @@ class EximbayV2Tax {
   Map<String, dynamic> toJson() => {
     if (receiptStatus != null) 'receipt_status': receiptStatus!.toJson(),
   };
-
-  static EximbayV2Tax fromJson(Map<String, dynamic> json) => EximbayV2Tax(
-    receiptStatus:
-        json['receipt_status'] != null
-            ? EximbayV2TaxReceiptStatus.fromJson(json['receipt_status'])
-            : null,
-  );
 }

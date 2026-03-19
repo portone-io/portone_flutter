@@ -9,7 +9,5 @@ enum PaymentUIType {
   final String _value;
   const PaymentUIType(String value) : _value = value;
   String toJson() => _value;
-  static PaymentUIType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
   LoadableUIType toLoadableUIType() => LoadableUITypePaymentUiType(this);
 }

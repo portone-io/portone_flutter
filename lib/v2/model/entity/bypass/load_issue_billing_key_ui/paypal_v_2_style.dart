@@ -43,25 +43,4 @@ class PaypalV2Style {
     if (shape != null) 'shape': shape!.toJson(),
     if (tagline != null) 'tagline': tagline!,
   };
-
-  static PaypalV2Style fromJson(Map<String, dynamic> json) => PaypalV2Style(
-    color:
-        json['color'] != null
-            ? PaypalV2StyleColor.fromJson(json['color'])
-            : null,
-    height: json['height'] as int?,
-    label:
-        json['label'] != null
-            ? PaypalV2StyleLabel.fromJson(json['label'])
-            : null,
-    layout:
-        json['layout'] != null
-            ? PaypalV2StyleLayout.fromJson(json['layout'])
-            : null,
-    shape:
-        json['shape'] != null
-            ? PaypalV2StyleShape.fromJson(json['shape'])
-            : null,
-    tagline: json['tagline'] as bool?,
-  );
 }

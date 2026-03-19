@@ -11,6 +11,4 @@ enum KcpV2DispTax {
   final String _value;
   const KcpV2DispTax(String value) : _value = value;
   String toJson() => _value;
-  static KcpV2DispTax fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

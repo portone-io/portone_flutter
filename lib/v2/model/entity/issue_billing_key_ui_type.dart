@@ -9,8 +9,6 @@ enum IssueBillingKeyUIType {
   final String _value;
   const IssueBillingKeyUIType(String value) : _value = value;
   String toJson() => _value;
-  static IssueBillingKeyUIType fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
   LoadableUIType toLoadableUIType() =>
       LoadableUITypeIssueBillingKeyUiType(this);
 }

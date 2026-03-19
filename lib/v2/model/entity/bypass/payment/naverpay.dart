@@ -29,18 +29,4 @@ class NaverpayPaymentBypass {
     if (subMerchantInfo != null) 'subMerchantInfo': subMerchantInfo!.toJson(),
     if (deliveryFee != null) 'deliveryFee': deliveryFee!,
   };
-
-  static NaverpayPaymentBypass fromJson(Map<String, dynamic> json) =>
-      NaverpayPaymentBypass(
-        useCfmYmdt: json['useCfmYmdt'] as String?,
-        productItems:
-            (json['productItems'] as List)
-                .map((e) => NaverpayProductItem.fromJson(e))
-                .toList(),
-        subMerchantInfo:
-            json['subMerchantInfo'] != null
-                ? NaverpaySubMerchantInfo.fromJson(json['subMerchantInfo'])
-                : null,
-        deliveryFee: json['deliveryFee'] as int?,
-      );
 }

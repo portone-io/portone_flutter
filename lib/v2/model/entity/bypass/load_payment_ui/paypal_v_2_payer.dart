@@ -15,15 +15,4 @@ class PaypalV2Payer {
     if (taxInfo != null) 'tax_info': taxInfo!.toJson(),
     if (address != null) 'address': address!.toJson(),
   };
-
-  static PaypalV2Payer fromJson(Map<String, dynamic> json) => PaypalV2Payer(
-    taxInfo:
-        json['tax_info'] != null
-            ? PaypalV2PayerTaxInfo.fromJson(json['tax_info'])
-            : null,
-    address:
-        json['address'] != null
-            ? PaypalV2PayerAddress.fromJson(json['address'])
-            : null,
-  );
 }

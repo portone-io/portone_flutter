@@ -12,9 +12,6 @@ class OfferPeriodRangeTo {
 
   Map<String, dynamic> toJson() => {'to': to};
 
-  static OfferPeriodRangeTo fromJson(Map<String, dynamic> json) =>
-      OfferPeriodRangeTo(to: json['to'] as String);
-
   OfferPeriodRange toOfferPeriodRange() =>
       OfferPeriodRangeOfferPeriodRangeTo(this);
 }

@@ -52,32 +52,4 @@ class EximbayV2Bypass {
     if (billTo != null) 'bill_to': billTo!.toJson(),
     if (settings != null) 'settings': settings!.toJson(),
   };
-
-  static EximbayV2Bypass fromJson(Map<String, dynamic> json) => EximbayV2Bypass(
-    payment:
-        json['payment'] != null
-            ? EximbayV2Payment.fromJson(json['payment'])
-            : null,
-    merchant:
-        json['merchant'] != null
-            ? EximbayV2Merchant.fromJson(json['merchant'])
-            : null,
-    tax: json['tax'] != null ? EximbayV2Tax.fromJson(json['tax']) : null,
-    surcharge:
-        (json['surcharge'] as List?)
-            ?.map((e) => EximbayV2Surcharge.fromJson(e))
-            .toList(),
-    shipTo:
-        json['ship_to'] != null
-            ? EximbayV2ShipTo.fromJson(json['ship_to'])
-            : null,
-    billTo:
-        json['bill_to'] != null
-            ? EximbayV2BillTo.fromJson(json['bill_to'])
-            : null,
-    settings:
-        json['settings'] != null
-            ? EximbayV2Settings.fromJson(json['settings'])
-            : null,
-  );
 }

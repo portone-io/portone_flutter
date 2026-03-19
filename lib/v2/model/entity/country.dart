@@ -755,6 +755,4 @@ enum Country {
   final String _value;
   const Country(String value) : _value = value;
   String toJson() => _value;
-  static Country fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

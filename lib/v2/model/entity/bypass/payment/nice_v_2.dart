@@ -80,34 +80,4 @@ class NiceV2PaymentBypass {
     if (paycoAccessToken != null) 'PaycoAccessToken': paycoAccessToken!,
     if (samPayMallType != null) 'SamPayMallType': samPayMallType!.toJson(),
   };
-
-  static NiceV2PaymentBypass fromJson(Map<String, dynamic> json) =>
-      NiceV2PaymentBypass(
-        logoImage: json['LogoImage'] as String?,
-        npDisableScroll:
-            json['NPDisableScroll'] != null
-                ? NiceV2DisableScroll.fromJson(json['NPDisableScroll'])
-                : null,
-        skinType:
-            json['SkinType'] != null
-                ? NiceV2SkinType.fromJson(json['SkinType'])
-                : null,
-        userCi: json['UserCI'] as String?,
-        mallUserId: json['MallUserID'] as String?,
-        directCouponYn:
-            json['DirectCouponYN'] != null
-                ? NiceV2DirectCoupon.fromJson(json['DirectCouponYN'])
-                : null,
-        directShowOpt:
-            json['DirectShowOpt'] != null
-                ? NiceV2DirectShow.fromJson(json['DirectShowOpt'])
-                : null,
-        cardShowOpt: json['CardShowOpt'] as String?,
-        paycoClientId: json['PaycoClientId'] as String?,
-        paycoAccessToken: json['PaycoAccessToken'] as String?,
-        samPayMallType:
-            json['SamPayMallType'] != null
-                ? NiceV2SamPayMallType.fromJson(json['SamPayMallType'])
-                : null,
-      );
 }

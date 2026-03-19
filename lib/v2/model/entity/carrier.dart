@@ -24,6 +24,4 @@ enum Carrier {
   final String _value;
   const Carrier(String value) : _value = value;
   String toJson() => _value;
-  static Carrier fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

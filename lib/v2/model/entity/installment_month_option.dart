@@ -27,13 +27,6 @@
 /// ```
 sealed class InstallmentMonthOption {
   Map<String, dynamic> toJson();
-  static InstallmentMonthOption fromJson(Map<String, dynamic> json) {
-    if (json.containsKey('fixedMonth'))
-      return InstallmentMonthOptionFixedMonth.fromJson(json);
-    if (json.containsKey('availableMonthList'))
-      return InstallmentMonthOptionAvailableMonthList.fromJson(json);
-    throw ArgumentError('Unknown InstallmentMonthOption variant');
-  }
 }
 
 /// **구매자가 선택할 수 없도록 고정된 할부 개월수**
@@ -42,8 +35,6 @@ sealed class InstallmentMonthOption {
 class InstallmentMonthOptionFixedMonth extends InstallmentMonthOption {
   final int? fixedMonth;
   InstallmentMonthOptionFixedMonth(this.fixedMonth);
-  static InstallmentMonthOptionFixedMonth fromJson(Map<String, dynamic> json) =>
-      InstallmentMonthOptionFixedMonth(json['fixedMonth'] as int?);
   @override
   Map<String, dynamic> toJson() => {'fixedMonth': fixedMonth};
 }
@@ -54,11 +45,6 @@ class InstallmentMonthOptionFixedMonth extends InstallmentMonthOption {
 class InstallmentMonthOptionAvailableMonthList extends InstallmentMonthOption {
   final List<int>? availableMonthList;
   InstallmentMonthOptionAvailableMonthList(this.availableMonthList);
-  static InstallmentMonthOptionAvailableMonthList fromJson(
-    Map<String, dynamic> json,
-  ) => InstallmentMonthOptionAvailableMonthList(
-    (json['availableMonthList'] as List?)?.cast<int>(),
-  );
   @override
   Map<String, dynamic> toJson() => {'availableMonthList': availableMonthList};
 }

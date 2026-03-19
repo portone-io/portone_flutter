@@ -4,21 +4,6 @@
 /// **고정식 가상계좌 설정**
 sealed class PaymentRequestUnionVirtualAccountFixedOption {
   Map<String, dynamic> toJson();
-  static PaymentRequestUnionVirtualAccountFixedOption fromJson(
-    Map<String, dynamic> json,
-  ) {
-    if (json.containsKey('pgAccountId'))
-      return PaymentRequestUnionVirtualAccountFixedOptionPgAccountId.fromJson(
-        json,
-      );
-    if (json.containsKey('accountNumber'))
-      return PaymentRequestUnionVirtualAccountFixedOptionAccountNumber.fromJson(
-        json,
-      );
-    throw ArgumentError(
-      'Unknown PaymentRequestUnionVirtualAccountFixedOption variant',
-    );
-  }
 }
 
 /// PG사로부터 사전에 가상계좌에 대한 ID를 발급받아 사용하는 경우의 가상계좌 ID
@@ -26,11 +11,6 @@ class PaymentRequestUnionVirtualAccountFixedOptionPgAccountId
     extends PaymentRequestUnionVirtualAccountFixedOption {
   final String pgAccountId;
   PaymentRequestUnionVirtualAccountFixedOptionPgAccountId(this.pgAccountId);
-  static PaymentRequestUnionVirtualAccountFixedOptionPgAccountId fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionVirtualAccountFixedOptionPgAccountId(
-    json['pgAccountId'] as String,
-  );
   @override
   Map<String, dynamic> toJson() => {'pgAccountId': pgAccountId};
 }
@@ -40,11 +20,6 @@ class PaymentRequestUnionVirtualAccountFixedOptionAccountNumber
     extends PaymentRequestUnionVirtualAccountFixedOption {
   final String accountNumber;
   PaymentRequestUnionVirtualAccountFixedOptionAccountNumber(this.accountNumber);
-  static PaymentRequestUnionVirtualAccountFixedOptionAccountNumber fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionVirtualAccountFixedOptionAccountNumber(
-    json['accountNumber'] as String,
-  );
   @override
   Map<String, dynamic> toJson() => {'accountNumber': accountNumber};
 }

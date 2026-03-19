@@ -12,12 +12,4 @@ class IssueBillingKeyRequestUnionCard {
   Map<String, dynamic> toJson() => {
     if (cardCompany != null) 'cardCompany': cardCompany!.toJson(),
   };
-
-  static IssueBillingKeyRequestUnionCard fromJson(Map<String, dynamic> json) =>
-      IssueBillingKeyRequestUnionCard(
-        cardCompany:
-            json['cardCompany'] != null
-                ? CardCompany.fromJson(json['cardCompany'])
-                : null,
-      );
 }

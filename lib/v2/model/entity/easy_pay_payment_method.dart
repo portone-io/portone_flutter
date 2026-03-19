@@ -18,6 +18,4 @@ enum EasyPayPaymentMethod {
   final String _value;
   const EasyPayPaymentMethod(String value) : _value = value;
   String toJson() => _value;
-  static EasyPayPaymentMethod fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }

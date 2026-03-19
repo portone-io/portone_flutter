@@ -17,13 +17,4 @@ class KsnetPaymentBypass {
     if (sndQpayType != null) 'sndQpayType': sndQpayType!.toJson(),
     if (easyPayDirect != null) 'easyPayDirect': easyPayDirect!,
   };
-
-  static KsnetPaymentBypass fromJson(Map<String, dynamic> json) =>
-      KsnetPaymentBypass(
-        sndQpayType:
-            json['sndQpayType'] != null
-                ? KsnetSndQpayType.fromJson(json['sndQpayType'])
-                : null,
-        easyPayDirect: json['easyPayDirect'] as bool?,
-      );
 }

@@ -12,15 +12,4 @@ class PaymentRequestUnionConvenienceStore {
   Map<String, dynamic> toJson() => {
     if (paymentDeadline != null) 'paymentDeadline': paymentDeadline!.toJson(),
   };
-
-  static PaymentRequestUnionConvenienceStore fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentRequestUnionConvenienceStore(
-    paymentDeadline:
-        json['paymentDeadline'] != null
-            ? PaymentRequestUnionConvenienceStorePaymentDeadline.fromJson(
-              json['paymentDeadline'],
-            )
-            : null,
-  );
 }

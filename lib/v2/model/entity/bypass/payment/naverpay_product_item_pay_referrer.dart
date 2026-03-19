@@ -17,6 +17,4 @@ enum NaverpayProductItemPayReferrer {
   final String _value;
   const NaverpayProductItemPayReferrer(String value) : _value = value;
   String toJson() => _value;
-  static NaverpayProductItemPayReferrer fromJson(String value) =>
-      values.firstWhere((e) => e._value == value);
 }
