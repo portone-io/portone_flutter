@@ -133,10 +133,8 @@ class _PortoneWebViewState extends State<PortoneWebView> {
                       for (var param
                           in uri.substring(firstHash + 1).split(';')) {
                         var keyValue = param.split('=');
-                        switch (keyValue.elementAtOrNull(0)) {
-                          case 'scheme':
-                            scheme = keyValue[1];
-                            break;
+                        if (keyValue.length >= 2 && keyValue[0] == 'scheme') {
+                          scheme = keyValue[1];
                         }
                       }
                       var redirect =
