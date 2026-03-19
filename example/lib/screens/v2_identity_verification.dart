@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portone_flutter/v2/portone_identity_verification.dart';
-import 'package:portone_flutter/v2/model/identity_verification_request.dart';
-import 'package:portone_flutter/v2/model/payment_response.dart';
+import 'package:portone_flutter/v2/model/request/identity_verification_request.dart';
+import 'package:portone_flutter/v2/model/response/identity_verification_response.dart';
 
 class V2IdentityVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     IdentityVerificationRequest data =
         Get.arguments['data'] as IdentityVerificationRequest;
+    String appScheme = Get.arguments['appScheme'] as String? ?? 'portone';
 
     return PortoneIdentityVerification(
       appBar: AppBar(
@@ -39,7 +40,8 @@ class V2IdentityVerification extends StatelessWidget {
         ),
       ),
       data: data,
-      callback: (PaymentResponse response) {
+      appScheme: appScheme,
+      callback: (IdentityVerificationResponse response) {
         Get.offNamed('/v2-identity-verification-result', arguments: response);
       },
     );

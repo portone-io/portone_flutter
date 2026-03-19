@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portone_flutter/v2/model/payment_response.dart';
+import 'package:portone_flutter/v2/model/response/payment_response.dart';
 
 class V2PaymentResult extends StatelessWidget {
   static const Color successColor = Color(0xff52c41a);
@@ -9,7 +9,7 @@ class V2PaymentResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PaymentResponse response = Get.arguments as PaymentResponse;
-    bool isSuccess = response.isSuccess;
+    bool isSuccess = response.code == null;
     String message;
     IconData icon;
     Color color;
@@ -43,11 +43,13 @@ class V2PaymentResult extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
               child: Column(
                 children: <Widget>[
-                  _buildRow('paymentId', response.paymentId ?? '-'),
-                  _buildRow('txId', response.txId ?? '-'),
+                  _buildRow('paymentId', response.paymentId),
+                  _buildRow('txId', response.txId),
                   if (!isSuccess) ...[
                     _buildRow('에러 코드', response.code ?? '-'),
                     _buildRow('에러 메시지', response.message ?? '-'),
+                    _buildRow('PG 에러 코드', response.pgCode ?? '-'),
+                    _buildRow('PG 에러 메시지', response.pgMessage ?? '-'),
                   ],
                 ],
               ),

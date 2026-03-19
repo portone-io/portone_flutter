@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portone_flutter/v2/portone_payment.dart';
-import 'package:portone_flutter/v2/model/payment_request.dart';
-import 'package:portone_flutter/v2/model/payment_response.dart';
+import 'package:portone_flutter/v2/model/request/payment_request.dart';
+import 'package:portone_flutter/v2/model/response/payment_response.dart';
 
 class V2Payment extends StatelessWidget {
   @override
@@ -13,10 +13,7 @@ class V2Payment extends StatelessWidget {
       appBar: AppBar(
         title: Text('포트원 V2 결제'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.indigo,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

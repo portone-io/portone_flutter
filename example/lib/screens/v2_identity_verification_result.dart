@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portone_flutter/v2/model/payment_response.dart';
+import 'package:portone_flutter/v2/model/response/identity_verification_response.dart';
 
 class V2IdentityVerificationResult extends StatelessWidget {
   static const Color successColor = Color(0xff52c41a);
@@ -8,8 +8,9 @@ class V2IdentityVerificationResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PaymentResponse response = Get.arguments as PaymentResponse;
-    bool isSuccess = response.isSuccess;
+    IdentityVerificationResponse response =
+        Get.arguments as IdentityVerificationResponse;
+    bool isSuccess = response.code == null;
     String message;
     IconData icon;
     Color color;
@@ -44,11 +45,14 @@ class V2IdentityVerificationResult extends StatelessWidget {
               child: Column(
                 children: [
                   _buildRow('identityVerificationId',
-                      response.identityVerificationId ?? '-'),
-                  _buildRow('txId', response.txId ?? '-'),
+                      response.identityVerificationId),
+                  _buildRow('identityVerificationTxId',
+                      response.identityVerificationTxId),
                   if (!isSuccess) ...[
                     _buildRow('에러 코드', response.code ?? '-'),
                     _buildRow('에러 메시지', response.message ?? '-'),
+                    _buildRow('PG 에러 코드', response.pgCode ?? '-'),
+                    _buildRow('PG 에러 메시지', response.pgMessage ?? '-'),
                   ],
                 ],
               ),

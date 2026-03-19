@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portone_flutter/v2/model/identity_verification_request.dart';
+import 'package:portone_flutter/v2/model/request/identity_verification_request.dart';
 
 class V2IdentityVerificationTest extends StatefulWidget {
   @override
@@ -14,6 +14,7 @@ class _V2IdentityVerificationTestState
   late String storeId;
   late String channelKey;
   late String identityVerificationId;
+  late String appScheme;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +74,15 @@ class _V2IdentityVerificationTestState
                   identityVerificationId = value!;
                 },
               ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'App Scheme (선택)',
+                ),
+                initialValue: 'portone',
+                onSaved: (String? value) {
+                  appScheme = value ?? 'portone';
+                },
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
@@ -89,7 +99,10 @@ class _V2IdentityVerificationTestState
 
                       Get.toNamed(
                         '/v2-identity-verification',
-                        arguments: {'data': data},
+                        arguments: {
+                          'data': data,
+                          'appScheme': appScheme,
+                        },
                       );
                     }
                   },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portone_flutter/v2/model/payment_request.dart';
+import 'package:portone_flutter/v2/model/request/payment_request.dart';
+import 'package:portone_flutter/v2/model/entity/payment_pay_method.dart';
+import 'package:portone_flutter/v2/model/entity/currency.dart';
 
 class V2PaymentTest extends StatefulWidget {
   @override
@@ -11,10 +13,11 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
   final _formKey = GlobalKey<FormState>();
   late String storeId;
   late String channelKey;
-  String payMethod = 'CARD';
+  PaymentPayMethod payMethod = PaymentPayMethod.CARD;
   late String orderName;
   late String amount;
   late String paymentId;
+  late String appScheme;
 
   @override
   Widget build(BuildContext context) {
@@ -62,27 +65,22 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                   channelKey = value!;
                 },
               ),
-              DropdownButtonFormField(
+              DropdownButtonFormField<PaymentPayMethod>(
                 decoration: InputDecoration(
                   labelText: '결제수단',
                 ),
                 initialValue: payMethod,
-                onChanged: (String? value) {
+                onChanged: (PaymentPayMethod? value) {
                   setState(() {
                     payMethod = value!;
                   });
                 },
-                items: [
-                  'CARD',
-                  'VIRTUAL_ACCOUNT',
-                  'TRANSFER',
-                  'MOBILE',
-                  'EASY_PAY',
-                  'GIFT_CERTIFICATE',
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
+                items: PaymentPayMethod.values
+                    .map<DropdownMenuItem<PaymentPayMethod>>(
+                        (PaymentPayMethod value) {
+                  return DropdownMenuItem<PaymentPayMethod>(
                     value: value,
-                    child: Text(value),
+                    child: Text(value.name),
                   );
                 }).toList(),
               ),
@@ -103,11 +101,11 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 initialValue: '1000',
                 validator: (value) {
                   if (value!.isEmpty) return '결제금액은 필수입력입니다.';
-                  RegExp regex = RegExp(r'^\d+(\.\d+)?$');
+                  RegExp regex = RegExp(r'^\d+$');
                   if (!regex.hasMatch(value)) return '결제금액이 올바르지 않습니다.';
                   return null;
                 },
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType: TextInputType.number,
                 onSaved: (String? value) {
                   amount = value!;
                 },
@@ -123,6 +121,17 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                   paymentId = value!;
                 },
               ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'App Scheme',
+                ),
+                validator: (value) =>
+                    value!.isEmpty ? 'App Scheme은 필수입력입니다' : null,
+                initialValue: 'portone',
+                onSaved: (String? value) {
+                  appScheme = value!;
+                },
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
@@ -135,9 +144,10 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                         channelKey: channelKey,
                         payMethod: payMethod,
                         orderName: orderName,
-                        totalAmount: num.parse(amount),
-                        currency: 'KRW',
+                        totalAmount: int.parse(amount),
+                        currency: Currency.KRW,
                         paymentId: paymentId,
+                        appScheme: appScheme,
                       );
 
                       Get.toNamed(
