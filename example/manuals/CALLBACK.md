@@ -1,8 +1,10 @@
 # 콜백 함수 설정하기
-포트원 V1 플러터 모듈 콜백 함수 설정을 위한 안내입니다.
+포트원 V1/V2 플러터 모듈 콜백 함수 설정을 위한 안내입니다.
 
 콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 라우트를 이동하도록 로직을 작성해야합니다. 아래와 같이 [push](https://api.flutter.dev/flutter/widgets/Navigator/push.html) 함수가 아닌 [pushReplacementNamed](https://api.flutter.dev/flutter/widgets/Navigator/pushReplacementNamed.html) 함수를 사용해야 합니다.
-`push` 함수를 사용할 경우, 결제/본인인증 완료 후 라우터가 변경되더라도 유저가 뒤로가기를 하면 포트원 V1 모듈이 다시 렌더링됩니다. 하지만 `pushReplacementNamed` 함수를 사용하면, 결제/본인인증 직전 화면으로 넘어가게 됩니다.
+`push` 함수를 사용할 경우, 결제/본인인증 완료 후 라우터가 변경되더라도 유저가 뒤로가기를 하면 포트원 모듈이 다시 렌더링됩니다. 하지만 `pushReplacementNamed` 함수를 사용하면, 결제/본인인증 직전 화면으로 넘어가게 됩니다.
+
+## V1
 
 ### 잘못된 사용 예제
 ```dart
@@ -29,8 +31,8 @@ callback: (Map<String, String> result) {
 ### 결과에 따라 로직 작성하기
 콜백 함수의 첫번째 인자(result)는 결제/본인인증 결과를 담고 있는 오브젝트로 아래와 같이 구성되어 있습니다. 자세한 내용은 포트원 개발자센터 [인증 결제 연동하기 - 3. 결제 결과 처리하기](https://developers.portone.io/opi/ko/integration/start/v1/auth?v=v1#3-%EA%B2%B0%EC%A0%9C-%EA%B2%B0%EA%B3%BC-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-)를 참고해주세요.
 
-| key           |  Description       | 
-| ------------- | ------------------ | 
+| key           |  Description       |
+| ------------- | ------------------ |
 | success       | 성공 여부            |
 | imp_uid       | 포트원 고유 결제번호    |
 | merchant_uid  | 주문번호             |
@@ -54,18 +56,19 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result = ModalRoute.of(context).settings.arguments;
+    Map<String, String> result =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     bool isSuccessed = getIsSuccessed(result);
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('포트원 V1 결과'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            message: isSuccessed ? '성공하였습니다' : '실패하였습니다',
+            isSuccessed ? '성공하였습니다' : '실패하였습니다',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
@@ -129,5 +132,68 @@ class Result extends StatelessWidget {
       ),
     );
   }
+}
+```
+
+## V2
+
+V2에서는 콜백이 타입이 지정된 응답 객체를 반환합니다.
+
+### 결제 콜백
+```dart
+callback: (PaymentResponse response) {
+  Navigator.pushReplacementNamed(
+    context,
+    '/result',
+    arguments: response,
+  );
+},
+```
+
+### 본인인증 콜백
+```dart
+callback: (IdentityVerificationResponse response) {
+  Navigator.pushReplacementNamed(
+    context,
+    '/result',
+    arguments: response,
+  );
+},
+```
+
+### V2 결과에 따라 로직 작성하기
+
+V2 결제 콜백의 `PaymentResponse`는 아래와 같이 구성되어 있습니다.
+
+| key             | Type   | Description            |
+| --------------- | ------ | ---------------------- |
+| transactionType | String | 거래 유형 (`PAYMENT`)  |
+| txId            | String | 결제 시도 ID           |
+| paymentId       | String | 결제 ID                |
+| paymentToken    | String | 수동 승인용 토큰       |
+| code            | String | 오류 코드 (실패 시)    |
+| message         | String | 오류 메시지 (실패 시)  |
+| pgCode          | String | PG 오류 코드           |
+| pgMessage       | String | PG 오류 메시지         |
+
+V2 본인인증 콜백의 `IdentityVerificationResponse`는 아래와 같이 구성되어 있습니다.
+
+| key                        | Type   | Description                          |
+| -------------------------- | ------ | ------------------------------------ |
+| transactionType            | String | 거래 유형 (`IDENTITY_VERIFICATION`)  |
+| identityVerificationId     | String | 본인인증 ID                          |
+| identityVerificationTxId   | String | 본인인증 시도 ID                     |
+| code                       | String | 오류 코드 (실패 시)                  |
+| message                    | String | 오류 메시지 (실패 시)                |
+| pgCode                     | String | PG 오류 코드                         |
+| pgMessage                  | String | PG 오류 메시지                       |
+
+V2에서 성공/실패 판단은 `code` 필드로 합니다. `code`가 `null`이면 성공, 값이 있으면 실패입니다.
+
+```dart
+if (response.code == null) {
+  // 성공 처리
+} else {
+  // 실패 처리 - response.message로 에러 메시지 확인
 }
 ```

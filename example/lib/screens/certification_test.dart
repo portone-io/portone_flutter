@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portone_flutter/model/certification_data.dart';
+import 'package:portone_flutter/v1/model/certification_data.dart';
 import 'package:portone_flutter_example/model/carrier.dart';
-import 'package:portone_flutter/model/url_data.dart';
+import 'package:portone_flutter/v1/model/url_data.dart';
 
 class CertificationTest extends StatefulWidget {
   @override

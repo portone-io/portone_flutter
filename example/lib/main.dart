@@ -8,6 +8,12 @@ import 'package:portone_flutter_example/screens/home.dart';
 import 'package:portone_flutter_example/screens/payment.dart';
 import 'package:portone_flutter_example/screens/payment_result.dart';
 import 'package:portone_flutter_example/screens/payment_test.dart';
+import 'package:portone_flutter_example/screens/v2_payment_test.dart';
+import 'package:portone_flutter_example/screens/v2_payment.dart';
+import 'package:portone_flutter_example/screens/v2_payment_result.dart';
+import 'package:portone_flutter_example/screens/v2_identity_verification_test.dart';
+import 'package:portone_flutter_example/screens/v2_identity_verification.dart';
+import 'package:portone_flutter_example/screens/v2_identity_verification_result.dart';
 
 void main() {
   runApp(IamportApp());
@@ -43,6 +49,18 @@ class _IamportAppState extends State<IamportApp> {
         GetPage(name: '/certification', page: () => Certification()),
         GetPage(
             name: '/certification-result', page: () => CertificationResult()),
+        GetPage(name: '/v2-payment-test', page: () => V2PaymentTest()),
+        GetPage(name: '/v2-payment', page: () => V2Payment()),
+        GetPage(name: '/v2-payment-result', page: () => V2PaymentResult()),
+        GetPage(
+            name: '/v2-identity-verification-test',
+            page: () => V2IdentityVerificationTest()),
+        GetPage(
+            name: '/v2-identity-verification',
+            page: () => V2IdentityVerification()),
+        GetPage(
+            name: '/v2-identity-verification-result',
+            page: () => V2IdentityVerificationResult()),
       ],
     );
   }
