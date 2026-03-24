@@ -1,4 +1,4 @@
-## [1.0.0-beta.1](https://github.com/portone-io/portone_flutter/tree/v1.0.0-beta.1)
+## [1.0.0](https://github.com/portone-io/portone_flutter/tree/v1.0.0)
 - V2 결제 및 본인인증 기능을 추가했습니다.
 - V1 코드를 `lib/v1/`로 이동했습니다. (breaking change)
 - WebView 라이브러리를 `flutter_inappwebview`로 교체했습니다.
