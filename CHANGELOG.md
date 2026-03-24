@@ -4,6 +4,7 @@
 - WebView 라이브러리를 `flutter_inappwebview`로 교체했습니다.
 - Dart SDK ^3.10.0 / Flutter >=3.38.1 이상을 요구합니다.
 - V2 모델을 코드젠 기반으로 자동 생성하도록 변경했습니다.
+- 0.12.x에서 업그레이드 시 [v1.0.0 마이그레이션 가이드](MIGRATION.md)를 참고하세요.
 
 ## [0.12.1](https://github.com/portone-io/portone_flutter/tree/main)
 - tierCode 결제창 호출 기능을 추가했습니다.

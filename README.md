@@ -6,6 +6,7 @@
 
 ## 목차
 - [버전정보](CHANGELOG.md)
+- [v1.0.0 마이그레이션 가이드](MIGRATION.md)
 - [지원정보](SUPPORT.md)
 - 설치하기
 - 설정하기
