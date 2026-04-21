@@ -22,10 +22,7 @@ class _V2IdentityVerificationTestState
       appBar: AppBar(
         title: Text('포트원 V2 본인인증 테스트'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.indigo,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -41,9 +38,7 @@ class _V2IdentityVerificationTestState
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Store ID',
-                ),
+                decoration: InputDecoration(labelText: 'Store ID'),
                 validator: (value) =>
                     value!.isEmpty ? 'Store ID는 필수입력입니다' : null,
                 initialValue: '',
@@ -52,9 +47,7 @@ class _V2IdentityVerificationTestState
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Channel Key',
-                ),
+                decoration: InputDecoration(labelText: 'Channel Key'),
                 validator: (value) =>
                     value!.isEmpty ? 'Channel Key는 필수입력입니다' : null,
                 initialValue: '',
@@ -63,9 +56,7 @@ class _V2IdentityVerificationTestState
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '본인인증 ID',
-                ),
+                decoration: InputDecoration(labelText: '본인인증 ID'),
                 validator: (value) =>
                     value!.isEmpty ? '본인인증 ID는 필수입력입니다' : null,
                 initialValue:
@@ -75,9 +66,7 @@ class _V2IdentityVerificationTestState
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'App Scheme (선택)',
-                ),
+                decoration: InputDecoration(labelText: 'App Scheme (선택)'),
                 initialValue: 'portone',
                 onSaved: (String? value) {
                   appScheme = value ?? 'portone';
@@ -92,17 +81,14 @@ class _V2IdentityVerificationTestState
 
                       IdentityVerificationRequest data =
                           IdentityVerificationRequest(
-                        storeId: storeId,
-                        channelKey: channelKey,
-                        identityVerificationId: identityVerificationId,
-                      );
+                            storeId: storeId,
+                            channelKey: channelKey,
+                            identityVerificationId: identityVerificationId,
+                          );
 
                       Get.toNamed(
                         '/v2-identity-verification',
-                        arguments: {
-                          'data': data,
-                          'appScheme': appScheme,
-                        },
+                        arguments: {'data': data, 'appScheme': appScheme},
                       );
                     }
                   },

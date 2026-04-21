@@ -10,10 +10,7 @@ class Daou {
   @JsonKey(name: "CASHRECEIPTFLAG")
   int cashReceiptFlag;
 
-  Daou({
-    this.productCode,
-    required this.cashReceiptFlag,
-  });
+  Daou({this.productCode, required this.cashReceiptFlag});
 
   factory Daou.fromJson(Map<String, dynamic> json) => _$DaouFromJson(json);
 

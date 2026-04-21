@@ -47,10 +47,9 @@ class IamportCertification extends StatelessWidget {
       callback,
     );
 
-    var init =
-        this.tierCode == null
-            ? 'IMP.init("${this.userCode}");'
-            : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
+    var init = this.tierCode == null
+        ? 'IMP.init("${this.userCode}");'
+        : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
 
     if (validation.getIsValid()) {
       return IamportWebView(
@@ -60,7 +59,9 @@ class IamportCertification extends StatelessWidget {
         gestureRecognizers: this.gestureRecognizers,
         customUserAgent: this.customUserAgent,
         executeJS: (InAppWebViewController controller) {
-          controller.evaluateJavascript(source: '''
+          controller.evaluateJavascript(
+            source:
+                '''
             $init
             IMP.certification(${jsonEncode(this.data.toJson())}, function(response) {
               const query = [];
@@ -69,7 +70,8 @@ class IamportCertification extends StatelessWidget {
               });
               location.href = "$redirectUrl" + "?" + query.join("&");
             });
-          ''');
+          ''',
+          );
         },
         useQueryData: (Map<String, String> data) {
           this.callback(data);

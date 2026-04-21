@@ -34,17 +34,10 @@ class CertificationResult extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              color: color,
-              size: 200,
-            ),
+            Icon(icon, color: color, size: 200),
             Text(
               message,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
@@ -56,14 +49,17 @@ class CertificationResult extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
-                            flex: 4,
-                            child: Text('포트원 고유 결제번호',
-                                style: TextStyle(color: Colors.grey))),
+                          flex: 4,
+                          child: Text(
+                            '포트원 고유 결제번호',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
                         Expanded(
                           flex: 5,
-                          child: Text(result['imp_uid'] != null
-                              ? result['imp_uid']!
-                              : ""),
+                          child: Text(
+                            result['imp_uid'] != null ? result['imp_uid']! : "",
+                          ),
                         ),
                       ],
                     ),
@@ -76,14 +72,18 @@ class CertificationResult extends StatelessWidget {
                         children: [
                           Expanded(
                             flex: 4,
-                            child: Text('에러 메시지',
-                                style: TextStyle(color: Colors.grey)),
+                            child: Text(
+                              '에러 메시지',
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                           Expanded(
                             flex: 5,
-                            child: Text(result['error_msg'] != null
-                                ? result['error_msg']!
-                                : ""),
+                            child: Text(
+                              result['error_msg'] != null
+                                  ? result['error_msg']!
+                                  : "",
+                            ),
                           ),
                         ],
                       ),

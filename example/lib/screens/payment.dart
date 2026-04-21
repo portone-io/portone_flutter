@@ -13,10 +13,7 @@ class Payment extends StatelessWidget {
       appBar: AppBar(
         title: Text('포트원 V1 결제'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

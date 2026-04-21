@@ -33,11 +33,7 @@ class IamportError extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.error,
-                    color: failureColor,
-                    size: 200,
-                  ),
+                  Icon(Icons.error, color: failureColor, size: 200),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
@@ -52,10 +48,7 @@ class IamportError extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(50, 10, 50, 50),
                     child: Text(
                       errorMessage!,
-                      style: TextStyle(
-                        height: 1.2,
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(height: 1.2, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ),

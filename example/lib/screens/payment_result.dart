@@ -68,17 +68,10 @@ class PaymentResult extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              color: color,
-              size: 200,
-            ),
+            Icon(icon, color: color, size: 200),
             Text(
               message,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
@@ -90,13 +83,13 @@ class PaymentResult extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
-                            flex: 4,
-                            child: Text('포트원 고유 결제번호',
-                                style: TextStyle(color: Colors.grey))),
-                        Expanded(
-                          flex: 5,
-                          child: Text(payload.transactionId),
+                          flex: 4,
+                          child: Text(
+                            '포트원 고유 결제번호',
+                            style: TextStyle(color: Colors.grey),
+                          ),
                         ),
+                        Expanded(flex: 5, child: Text(payload.transactionId)),
                       ],
                     ),
                   ),
@@ -107,13 +100,13 @@ class PaymentResult extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
-                                  flex: 4,
-                                  child: Text('주문 번호',
-                                      style: TextStyle(color: Colors.grey))),
-                              Expanded(
-                                flex: 5,
-                                child: Text(payload.paymentId),
+                                flex: 4,
+                                child: Text(
+                                  '주문 번호',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
                               ),
+                              Expanded(flex: 5, child: Text(payload.paymentId)),
                             ],
                           ),
                         )
@@ -122,31 +115,37 @@ class PaymentResult extends StatelessWidget {
                           child: Column(
                             children: [
                               Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      flex: 4,
-                                      child: Text('에러 코드',
-                                          style: TextStyle(color: Colors.grey)),
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text(
+                                      '에러 코드',
+                                      style: TextStyle(color: Colors.grey),
                                     ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Text(payload.errorCode),
-                                    )
-                                  ]),
+                                  ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text(payload.errorCode),
+                                  ),
+                                ],
+                              ),
                               Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      flex: 4,
-                                      child: Text('에러 메시지',
-                                          style: TextStyle(color: Colors.grey)),
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text(
+                                      '에러 메시지',
+                                      style: TextStyle(color: Colors.grey),
                                     ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Text(payload.errorMessage),
-                                    ),
-                                  ])
+                                  ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text(payload.errorMessage),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),

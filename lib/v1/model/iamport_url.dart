@@ -13,8 +13,9 @@ class IamportUrl {
   IamportUrl(String incomeUrl) {
     this.url = incomeUrl;
 
-    List<String> splittedUrl =
-        this.url.replaceFirst(RegExp(r'://'), ' ').split(' ');
+    List<String> splittedUrl = this.url
+        .replaceFirst(RegExp(r'://'), ' ')
+        .split(' ');
     this.appScheme = splittedUrl[0];
 
     if (Platform.isAndroid) {
@@ -71,9 +72,9 @@ class IamportUrl {
     }
 
     if (Platform.isAndroid && this.appScheme == 'https') {
-      if (this
-          .url
-          .startsWith('https://play.google.com/store/apps/details?id=')) {
+      if (this.url.startsWith(
+        'https://play.google.com/store/apps/details?id=',
+      )) {
         return true;
       }
     }

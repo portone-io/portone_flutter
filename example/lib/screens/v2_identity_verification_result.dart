@@ -44,10 +44,14 @@ class V2IdentityVerificationResult extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
               child: Column(
                 children: [
-                  _buildRow('identityVerificationId',
-                      response.identityVerificationId),
-                  _buildRow('identityVerificationTxId',
-                      response.identityVerificationTxId),
+                  _buildRow(
+                    'identityVerificationId',
+                    response.identityVerificationId,
+                  ),
+                  _buildRow(
+                    'identityVerificationTxId',
+                    response.identityVerificationTxId,
+                  ),
                   if (!isSuccess) ...[
                     _buildRow('에러 코드', response.code ?? '-'),
                     _buildRow('에러 메시지', response.message ?? '-'),

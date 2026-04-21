@@ -29,17 +29,17 @@ class _IamportAppState extends State<IamportApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent,
-      statusBarColor: Colors.transparent,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.transparent,
+      ),
+    );
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
     return GetMaterialApp(
       initialRoute: '/',
-      theme: ThemeData(
-        primaryColor: primaryColor,
-      ),
+      theme: ThemeData(primaryColor: primaryColor),
       getPages: [
         GetPage(name: '/', page: () => Home()),
         GetPage(name: '/payment-test', page: () => PaymentTest()),
@@ -48,19 +48,24 @@ class _IamportAppState extends State<IamportApp> {
         GetPage(name: '/certification-test', page: () => CertificationTest()),
         GetPage(name: '/certification', page: () => Certification()),
         GetPage(
-            name: '/certification-result', page: () => CertificationResult()),
+          name: '/certification-result',
+          page: () => CertificationResult(),
+        ),
         GetPage(name: '/v2-payment-test', page: () => V2PaymentTest()),
         GetPage(name: '/v2-payment', page: () => V2Payment()),
         GetPage(name: '/v2-payment-result', page: () => V2PaymentResult()),
         GetPage(
-            name: '/v2-identity-verification-test',
-            page: () => V2IdentityVerificationTest()),
+          name: '/v2-identity-verification-test',
+          page: () => V2IdentityVerificationTest(),
+        ),
         GetPage(
-            name: '/v2-identity-verification',
-            page: () => V2IdentityVerification()),
+          name: '/v2-identity-verification',
+          page: () => V2IdentityVerification(),
+        ),
         GetPage(
-            name: '/v2-identity-verification-result',
-            page: () => V2IdentityVerificationResult()),
+          name: '/v2-identity-verification-result',
+          page: () => V2IdentityVerificationResult(),
+        ),
       ],
     );
   }

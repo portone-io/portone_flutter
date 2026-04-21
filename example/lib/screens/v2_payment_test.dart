@@ -25,10 +25,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
       appBar: AppBar(
         title: Text('포트원 V2 결제 테스트'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.indigo,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -44,9 +41,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Store ID',
-                ),
+                decoration: InputDecoration(labelText: 'Store ID'),
                 validator: (value) =>
                     value!.isEmpty ? 'Store ID는 필수입력입니다' : null,
                 initialValue: '',
@@ -55,9 +50,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Channel Key',
-                ),
+                decoration: InputDecoration(labelText: 'Channel Key'),
                 validator: (value) =>
                     value!.isEmpty ? 'Channel Key는 필수입력입니다' : null,
                 initialValue: '',
@@ -66,9 +59,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               DropdownButtonFormField<PaymentPayMethod>(
-                decoration: InputDecoration(
-                  labelText: '결제수단',
-                ),
+                decoration: InputDecoration(labelText: '결제수단'),
                 initialValue: payMethod,
                 onChanged: (PaymentPayMethod? value) {
                   setState(() {
@@ -76,18 +67,18 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                   });
                 },
                 items: PaymentPayMethod.values
-                    .map<DropdownMenuItem<PaymentPayMethod>>(
-                        (PaymentPayMethod value) {
-                  return DropdownMenuItem<PaymentPayMethod>(
-                    value: value,
-                    child: Text(value.name),
-                  );
-                }).toList(),
+                    .map<DropdownMenuItem<PaymentPayMethod>>((
+                      PaymentPayMethod value,
+                    ) {
+                      return DropdownMenuItem<PaymentPayMethod>(
+                        value: value,
+                        child: Text(value.name),
+                      );
+                    })
+                    .toList(),
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문명',
-                ),
+                decoration: InputDecoration(labelText: '주문명'),
                 initialValue: '포트원 V2 테스트 결제',
                 validator: (value) => value!.isEmpty ? '주문명은 필수입력입니다' : null,
                 onSaved: (String? value) {
@@ -95,9 +86,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '결제금액',
-                ),
+                decoration: InputDecoration(labelText: '결제금액'),
                 initialValue: '1000',
                 validator: (value) {
                   if (value!.isEmpty) return '결제금액은 필수입력입니다.';
@@ -111,9 +100,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문번호 (paymentId)',
-                ),
+                decoration: InputDecoration(labelText: '주문번호 (paymentId)'),
                 validator: (value) => value!.isEmpty ? '주문번호는 필수입력입니다' : null,
                 initialValue:
                     'payment_${DateTime.now().millisecondsSinceEpoch}',
@@ -122,9 +109,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'App Scheme',
-                ),
+                decoration: InputDecoration(labelText: 'App Scheme'),
                 validator: (value) =>
                     value!.isEmpty ? 'App Scheme은 필수입력입니다' : null,
                 initialValue: 'portone',
@@ -150,10 +135,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                         appScheme: appScheme,
                       );
 
-                      Get.toNamed(
-                        '/v2-payment',
-                        arguments: {'data': data},
-                      );
+                      Get.toNamed('/v2-payment', arguments: {'data': data});
                     }
                   },
                   child: Text(

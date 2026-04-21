@@ -7,9 +7,7 @@ class Settle {
   @JsonKey(name: "criPsblYn") // bypass.settle.criPsblYn
   String? cashReceiptType; // Y or N (default "Y")
 
-  Settle({
-    this.cashReceiptType,
-  });
+  Settle({this.cashReceiptType});
 
   factory Settle.fromJson(Map<String, dynamic> json) => _$SettleFromJson(json);
 

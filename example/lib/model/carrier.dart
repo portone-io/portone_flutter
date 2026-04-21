@@ -1,10 +1,5 @@
 class Carrier {
-  static List<String> CARRIERS = [
-    'SKT',
-    'KTF',
-    'LGT',
-    'MVNO',
-  ];
+  static List<String> CARRIERS = ['SKT', 'KTF', 'LGT', 'MVNO'];
 
   static String getLabel(String pg) {
     switch (pg) {

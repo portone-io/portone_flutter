@@ -26,10 +26,7 @@ class _CertificationTestState extends State<CertificationTest> {
       appBar: AppBar(
         title: Text('포트원 V1 본인인증 테스트'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -45,9 +42,7 @@ class _CertificationTestState extends State<CertificationTest> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '가맹점 식별코드',
-                ),
+                decoration: InputDecoration(labelText: '가맹점 식별코드'),
                 validator: (value) =>
                     value!.isEmpty ? '가맹점 식별코드는 필수입력입니다' : null,
                 initialValue: '',
@@ -56,9 +51,7 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
               ),
               DropdownButtonFormField(
-                decoration: InputDecoration(
-                  labelText: 'PG사',
-                ),
+                decoration: InputDecoration(labelText: 'PG사'),
                 value: pg,
                 onChanged: (String? value) {
                   setState(() {
@@ -67,18 +60,19 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
                 items: ['danal', 'inicis_unified']
                     .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value == 'danal'
-                        ? '다날 휴대폰 본인인증'
-                        : (value == 'inicis_unified' ? '이니시스 통합인증' : '')),
-                  );
-                }).toList(),
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value == 'danal'
+                              ? '다날 휴대폰 본인인증'
+                              : (value == 'inicis_unified' ? '이니시스 통합인증' : ''),
+                        ),
+                      );
+                    })
+                    .toList(),
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문번호',
-                ),
+                decoration: InputDecoration(labelText: '주문번호'),
                 validator: (value) => value!.isEmpty ? '주문번호는 필수입력입니다' : null,
                 initialValue: 'mid_${DateTime.now().millisecondsSinceEpoch}',
                 onSaved: (String? value) {
@@ -88,9 +82,7 @@ class _CertificationTestState extends State<CertificationTest> {
               Visibility(
                 child: TextFormField(
                   initialValue: company,
-                  decoration: InputDecoration(
-                    labelText: '회사명',
-                  ),
+                  decoration: InputDecoration(labelText: '회사명'),
                   onSaved: (String? value) {
                     company = value!;
                   },
@@ -99,17 +91,16 @@ class _CertificationTestState extends State<CertificationTest> {
               ),
               Visibility(
                 child: DropdownButtonFormField(
-                  decoration: InputDecoration(
-                    labelText: '통신사',
-                  ),
+                  decoration: InputDecoration(labelText: '통신사'),
                   value: carrier,
                   onChanged: (String? value) {
                     setState(() {
                       carrier = value!;
                     });
                   },
-                  items: Carrier.getLists()
-                      .map<DropdownMenuItem<String>>((String value) {
+                  items: Carrier.getLists().map<DropdownMenuItem<String>>((
+                    String value,
+                  ) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(Carrier.getLabel(value)),
@@ -189,10 +180,7 @@ class _CertificationTestState extends State<CertificationTest> {
 
                       Get.toNamed(
                         '/certification',
-                        arguments: {
-                          'userCode': userCode,
-                          'data': data,
-                        },
+                        arguments: {'userCode': userCode, 'data': data},
                       );
                     }
                   },

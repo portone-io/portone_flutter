@@ -1,26 +1,12 @@
 class Method {
-  static List<String> METHODS = [
-    'card',
-    'trans',
-    'vbank',
-    'phone',
-  ];
+  static List<String> METHODS = ['card', 'trans', 'vbank', 'phone'];
 
-  static List<String> METHODS_FOR_INICIS = METHODS +
-      [
-        'samsung',
-        'kpay',
-        'cultureland',
-        'smartculture',
-        'happymoney',
-      ];
+  static List<String> METHODS_FOR_INICIS =
+      METHODS +
+      ['samsung', 'kpay', 'cultureland', 'smartculture', 'happymoney'];
 
-  static List<String> METHODS_FOR_UPLUS = METHODS +
-      [
-        'cultureland',
-        'smartculture',
-        'booknlife',
-      ];
+  static List<String> METHODS_FOR_UPLUS =
+      METHODS + ['cultureland', 'smartculture', 'booknlife'];
 
   static List<String> METHODS_FOR_KCP = METHODS + ['samsung', 'naverpay'];
 
