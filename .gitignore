@@ -19,3 +19,5 @@ example/ios/Podfile.lock
 example/ios/Podfile.lock
 example/.flutter-plugins-dependencies
 example/ios/Flutter/flutter_export_environment.sh
+
+example/android/.kotlin/
