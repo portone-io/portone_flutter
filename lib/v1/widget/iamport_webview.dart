@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -94,12 +96,37 @@ class _IamportWebViewState extends State<IamportWebView> {
               gestureRecognizers: widget.gestureRecognizers,
               onWebViewCreated: (controller) {
                 this._webViewController = controller;
+                if (Platform.isIOS) {
+                  // safari에서 히스토리가 쌓이지 않아 뒤로가기가 먹통인 현상 해결
+                  // 참고: tosspayments_widget_sdk_flutter 2.1.2 lib/webview/payment_window_in_app_webview.dart:82
+                  this._webViewController.loadUrl(
+                    urlRequest: URLRequest(
+                      url: WebUri.uri(Uri.parse('about:blank')),
+                    ),
+                  );
+                }
+                this._webViewController.loadUrl(
+                  urlRequest: URLRequest(
+                    url: WebUri.uri(
+                      Uri.parse(
+                        Uri.dataFromString(
+                          IamportWebView.html,
+                          mimeType: 'text/html',
+                          encoding: Encoding.getByName('utf-8'),
+                        ).toString(),
+                      ),
+                    ),
+                  ),
+                );
                 if (widget.type == ActionType.payment) {
                   // 스마일페이, 나이스 실시간 계좌이체
                   _sub = widget.customPGAction(this._webViewController);
                 }
               },
               onLoadStop: (controller, url) {
+                if (url.toString() == 'about:blank') {
+                  return;
+                }
                 // 웹뷰 로딩 완료시에 화면 전환
                 if (_isWebviewLoaded == 1) {
                   setState(() {
