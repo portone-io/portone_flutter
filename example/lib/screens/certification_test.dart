@@ -52,7 +52,7 @@ class _CertificationTestState extends State<CertificationTest> {
               ),
               DropdownButtonFormField(
                 decoration: InputDecoration(labelText: 'PG사'),
-                value: pg,
+                initialValue: pg,
                 onChanged: (String? value) {
                   setState(() {
                     pg = value!;
@@ -92,7 +92,7 @@ class _CertificationTestState extends State<CertificationTest> {
               Visibility(
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(labelText: '통신사'),
-                  value: carrier,
+                  initialValue: carrier,
                   onChanged: (String? value) {
                     setState(() {
                       carrier = value!;
