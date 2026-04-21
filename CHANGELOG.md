@@ -1,3 +1,6 @@
+## [1.0.1](https://github.com/portone-io/portone_flutter/tree/main)
+- iOS에서 브랜드페이 진입 시 정상적으로 동작하지 않던 문제를 해결했습니다.
+
 ## [1.0.0](https://github.com/portone-io/portone_flutter/tree/v1.0.0)
 - V2 결제 및 본인인증 기능을 추가했습니다.
 - V1 코드를 `lib/v1/`로 이동했습니다. (breaking change)
@@ -6,7 +9,7 @@
 - V2 모델을 코드젠 기반으로 자동 생성하도록 변경했습니다.
 - 0.12.x에서 업그레이드 시 [v1.0.0 마이그레이션 가이드](MIGRATION.md)를 참고하세요.
 
-## [0.12.1](https://github.com/portone-io/portone_flutter/tree/main)
+## [0.12.1](https://github.com/portone-io/portone_flutter/tree/v0.12.1)
 - tierCode 결제창 호출 기능을 추가했습니다.
 
 ## [0.12.0](https://github.com/portone-io/portone_flutter/tree/v0.12.0)
