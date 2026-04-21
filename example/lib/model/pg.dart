@@ -26,7 +26,8 @@ class Pg {
     'tosspayments',
     'ksnet',
     'welcome',
-    'tosspay_v2'
+    'tosspay_v2',
+    'toss_brandpay',
   ];
 
   static String getLabel(String pg) {
@@ -85,6 +86,8 @@ class Pg {
         return '웰컴페이먼츠';
       case 'tosspay_v2':
         return '토스페이(V2)';
+      case 'toss_brandpay':
+        return '토스 브랜드페이';
       default:
         return '-';
     }

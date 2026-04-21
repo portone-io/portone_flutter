@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "io.portone.portone_flutter_example"
-        minSdk = 23
+        minSdkVersion = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

@@ -30,6 +30,7 @@ class Method {
   static List<String> METHOD_FOR_VBANK = ['vbank'];
   static List<String> METHOD_FOR_TRANS = ['trans'];
   static List<String> METHOD_FOR_TOSSPAY_V2 = ['tosspay'];
+  static List<String> METHOD_FOR_TOSS_BRANDPAY = ['toss_brandpay'];
 
   static String getLabel(String method) {
     switch (method) {
@@ -57,6 +58,8 @@ class Method {
         return '네이버페이';
       case 'tosspay':
         return '토스페이';
+      case 'toss_brandpay':
+        return '토스 브랜드페이';
       default:
         return '-';
     }
@@ -73,6 +76,8 @@ class Method {
         return 'trans';
       case 'tosspay_v2':
         return 'tosspay';
+      case 'toss_brandpay':
+        return 'toss_brandpay';
       default:
         return 'card';
     }
@@ -106,6 +111,8 @@ class Method {
         return METHOD_FOR_TRANS;
       case 'tosspay_v2':
         return METHOD_FOR_TOSSPAY_V2;
+      case 'toss_brandpay':
+        return METHOD_FOR_TOSS_BRANDPAY;
       default:
         return METHODS;
     }

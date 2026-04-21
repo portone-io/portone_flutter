@@ -28,6 +28,7 @@ class _PaymentTestState extends State<PaymentTest> {
   late String buyerName; // 구매자 이름
   late String buyerTel; // 구매자 전화번호
   late String buyerEmail; // 구매자 이메일
+  String? customerId; // 구매자 ID (토스 브랜드페이)
 
   @override
   Widget build(BuildContext context) {
@@ -162,10 +163,23 @@ class _PaymentTestState extends State<PaymentTest> {
                       },
                     )
                   : Container(),
+              pg == 'toss_brandpay'
+                  ? TextFormField(
+                      key: const ValueKey('customer_id_field'),
+                      decoration: InputDecoration(
+                        labelText: '구매자 ID (customer_id)',
+                        hintText: 'UUID 등 유추가 불가능한 무작위 값',
+                      ),
+                      validator: (value) =>
+                          value!.isEmpty ? '구매자 ID는 필수입력입니다' : null,
+                      initialValue: customerId,
+                      onSaved: (String? value) {
+                        customerId = value!;
+                      },
+                    )
+                  : Container(),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문명',
-                ),
+                decoration: InputDecoration(labelText: '주문명'),
                 initialValue: '포트원 V1 결제 데이터 분석',
                 validator: (value) => value!.isEmpty ? '주문명은 필수입력입니다' : null,
                 onSaved: (String? value) {
@@ -305,6 +319,10 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.naverCultureBenefit = false;
                         data.naverPopupMode = false;
                         data.naverProducts = [p];
+                      }
+
+                      if (pg == 'toss_brandpay') {
+                        data.customerId = customerId;
                       }
 
                       // kcp 에스크로 관련 정보 추가
