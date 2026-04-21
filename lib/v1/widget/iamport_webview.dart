@@ -81,11 +81,6 @@ class _IamportWebViewState extends State<IamportWebView> {
           index: _isWebviewLoaded,
           children: [
             InAppWebView(
-              initialData: InAppWebViewInitialData(
-                data: IamportWebView.html,
-                mimeType: 'text/html',
-                encoding: 'utf-8',
-              ),
               initialSettings: InAppWebViewSettings(
                 javaScriptEnabled: true,
                 useShouldOverrideUrlLoading: true,
