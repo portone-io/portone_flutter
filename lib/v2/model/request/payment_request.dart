@@ -16,6 +16,7 @@ import 'package:portone_flutter/v2/model/entity/product_type.dart';
 import 'package:portone_flutter/v2/model/entity/store_details.dart';
 import 'package:portone_flutter/v2/model/entity/window_types.dart';
 import 'package:portone_flutter/v2/model/request/payment_request_union_alipay.dart';
+import 'package:portone_flutter/v2/model/request/payment_request_union_alipay_plus.dart';
 import 'package:portone_flutter/v2/model/request/payment_request_union_card.dart';
 import 'package:portone_flutter/v2/model/request/payment_request_union_convenience_store.dart';
 import 'package:portone_flutter/v2/model/request/payment_request_union_easy_pay.dart';
@@ -40,6 +41,9 @@ class PaymentRequest {
 
   /// **주문명**
   final String orderName;
+
+  /// **주문 상세 내용**
+  final String? orderDetail;
 
   /// **결제 금액**
   ///
@@ -150,7 +154,7 @@ class PaymentRequest {
 
   /// **UI 언어**
   ///
-  /// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
+  /// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A, 페이먼트월에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
   final Locale? locale;
 
   /// **결제 정보에 포함할 고객사 커스텀 JSON 데이터**
@@ -250,11 +254,13 @@ class PaymentRequest {
   final PaymentRequestUnionPaypal? paypal;
   final PaymentRequestUnionAlipay? alipay;
   final PaymentRequestUnionConvenienceStore? convenienceStore;
+  final PaymentRequestUnionAlipayPlus alipayPlus;
 
   PaymentRequest({
     required this.storeId,
     required this.paymentId,
     required this.orderName,
+    this.orderDetail,
     required this.totalAmount,
     required this.currency,
     required this.payMethod,
@@ -291,12 +297,14 @@ class PaymentRequest {
     this.paypal,
     this.alipay,
     this.convenienceStore,
+    required this.alipayPlus,
   });
 
   Map<String, dynamic> toJson() => {
     'storeId': storeId,
     'paymentId': paymentId,
     'orderName': orderName,
+    if (orderDetail != null) 'orderDetail': orderDetail!,
     'totalAmount': totalAmount,
     'currency': currency.toJson(),
     'payMethod': payMethod.toJson(),
@@ -334,5 +342,6 @@ class PaymentRequest {
     if (alipay != null) 'alipay': alipay!.toJson(),
     if (convenienceStore != null)
       'convenienceStore': convenienceStore!.toJson(),
+    'alipayPlus': alipayPlus.toJson(),
   };
 }
