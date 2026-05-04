@@ -149,7 +149,77 @@ enum EasyPayProvider {
   /// Merpay
   ///
   /// - KG이니시스 JPPG 일본결제
-  MERPAY('MERPAY');
+  MERPAY('MERPAY'),
+
+  /// Alipay
+  ///
+  /// - KICC V2 알리페이 플러스
+  ALIPAY('ALIPAY'),
+
+  /// Alipay (HK)
+  ///
+  /// - KICC V2 알리페이 플러스
+  ALIPAY_HK('ALIPAY_HK'),
+
+  /// TrueMoney
+  ///
+  /// - KICC V2 알리페이 플러스
+  TRUE_MONEY('TRUE_MONEY'),
+
+  /// Touch'n Go eWallet
+  ///
+  /// - KICC V2 알리페이 플러스
+  TOUCH_N_GO('TOUCH_N_GO'),
+
+  /// GCash
+  ///
+  /// - KICC V2 알리페이 플러스
+  GCASH('GCASH'),
+
+  /// DANA
+  ///
+  /// - KICC V2 알리페이 플러스
+  DANA('DANA'),
+
+  /// Rabbit LINE Pay
+  ///
+  /// - KICC V2 알리페이 플러스
+  RABBIT_LINE_PAY('RABBIT_LINE_PAY'),
+
+  /// BPI (Bank of the Philippine Islands)
+  ///
+  /// - KICC V2 알리페이 플러스
+  BPI('BPI'),
+
+  /// Boost
+  ///
+  /// - KICC V2 알리페이 플러스
+  BOOST('BOOST'),
+
+  /// BillEase
+  ///
+  /// - KICC V2 알리페이 플러스
+  BILL_EASE('BILL_EASE'),
+
+  /// Tinaba
+  ///
+  /// - KICC V2 알리페이 플러스
+  TINABA('TINABA'),
+
+  /// MPay
+  ///
+  /// - KICC V2 알리페이 플러스
+  MPAY('MPAY'),
+
+  /// Kredivo
+  ///
+  /// - KICC V2 알리페이 플러스
+  KREDIVO('KREDIVO'),
+
+  /// WeChat Pay
+  ///
+  /// - KICC V2 알리페이 플러스
+  WECHAT('WECHAT');
 
   final String _value;
   const EasyPayProvider(String value) : _value = value;
