@@ -21,3 +21,7 @@ example/.flutter-plugins-dependencies
 example/ios/Flutter/flutter_export_environment.sh
 
 example/android/.kotlin/
+
+node_modules/
+package-lock.json
+yarn.lock
