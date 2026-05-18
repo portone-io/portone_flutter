@@ -32,14 +32,14 @@ jobs:
           node-version: 24
 
       - name: Install pnpm
-        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e
+        uses: pnpm/action-setup@739bfe42ca9233c5e6aca07c1a25a9d34aca49b0
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf
+        uses: changesets/action@63a615b9cd06ba9a3e6d13796c7fbcb080a60a0b
         with:
           version: pnpm run version
           commit: "ci: release"
