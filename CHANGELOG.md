@@ -1,6 +1,6 @@
 # portone_flutter
 
-## [1.0.1](https://github.com/portone-io/portone_flutter/tree/main)
+## [1.0.1](https://github.com/portone-io/portone_flutter/tree/v1.0.1)
 - iOS에서 브랜드페이 진입 시 정상적으로 동작하지 않던 문제를 해결했습니다.
 
 ## [1.0.0](https://github.com/portone-io/portone_flutter/tree/v1.0.0)
