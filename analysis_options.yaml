@@ -1,0 +1,6 @@
+analyzer:
+  exclude:
+    # SDK generator output — do not hand-edit; warnings here are not actionable.
+    - lib/v2/model/**
+    # json_serializable output.
+    - lib/**/*.g.dart
