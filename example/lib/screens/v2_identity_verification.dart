@@ -15,10 +15,7 @@ class V2IdentityVerification extends StatelessWidget {
       appBar: AppBar(
         title: Text('포트원 V2 본인인증'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.indigo,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

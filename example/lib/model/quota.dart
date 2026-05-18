@@ -1,8 +1,5 @@
 class Quota {
-  static List<String> QUOTAS = [
-    '0',
-    '1',
-  ];
+  static List<String> QUOTAS = ['0', '1'];
 
   static String getLabel(String quota) {
     switch (quota) {

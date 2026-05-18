@@ -36,10 +36,7 @@ class _PaymentTestState extends State<PaymentTest> {
       appBar: AppBar(
         title: Text('포트원 V1 결제 테스트'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -55,9 +52,7 @@ class _PaymentTestState extends State<PaymentTest> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '가맹점 식별코드',
-                ),
+                decoration: InputDecoration(labelText: '가맹점 식별코드'),
                 validator: (value) =>
                     value!.isEmpty ? '가맹점 식별코드는 필수입력입니다' : null,
                 initialValue: '',
@@ -66,18 +61,17 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               DropdownButtonFormField(
-                decoration: InputDecoration(
-                  labelText: 'PG사',
-                ),
-                value: pg,
+                decoration: InputDecoration(labelText: 'PG사'),
+                initialValue: pg,
                 onChanged: (String? value) {
                   setState(() {
                     pg = value!;
                     payMethod = Method.getValueByPg(value);
                   });
                 },
-                items:
-                    Pg.getLists().map<DropdownMenuItem<String>>((String value) {
+                items: Pg.getLists().map<DropdownMenuItem<String>>((
+                  String value,
+                ) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(Pg.getLabel(value)),
@@ -85,17 +79,16 @@ class _PaymentTestState extends State<PaymentTest> {
                 }).toList(),
               ),
               DropdownButtonFormField(
-                decoration: InputDecoration(
-                  labelText: '결제수단',
-                ),
-                value: payMethod,
+                decoration: InputDecoration(labelText: '결제수단'),
+                initialValue: payMethod,
                 onChanged: (String? value) {
                   setState(() {
                     payMethod = value!;
                   });
                 },
-                items: Method.getListsByPg(pg)
-                    .map<DropdownMenuItem<String>>((String value) {
+                items: Method.getListsByPg(pg).map<DropdownMenuItem<String>>((
+                  String value,
+                ) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(Method.getLabel(value)),
@@ -104,10 +97,8 @@ class _PaymentTestState extends State<PaymentTest> {
               ),
               payMethod == 'card'
                   ? DropdownButtonFormField(
-                      decoration: InputDecoration(
-                        labelText: '할부개월수',
-                      ),
-                      value: cardQuota,
+                      decoration: InputDecoration(labelText: '할부개월수'),
+                      initialValue: cardQuota,
                       onChanged: (String? value) {
                         setState(() {
                           cardQuota = value!;
@@ -115,11 +106,12 @@ class _PaymentTestState extends State<PaymentTest> {
                       },
                       items: Quota.getListsByPg(pg)
                           .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(Quota.getLabel(value)),
-                        );
-                      }).toList(),
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(Quota.getLabel(value)),
+                            );
+                          })
+                          .toList(),
                     )
                   : Container(),
               payMethod == 'vbank'
@@ -144,9 +136,7 @@ class _PaymentTestState extends State<PaymentTest> {
                   : Container(),
               payMethod == 'vbank' && pg == 'danal_tpay'
                   ? TextFormField(
-                      decoration: InputDecoration(
-                        labelText: '사업자번호',
-                      ),
+                      decoration: InputDecoration(labelText: '사업자번호'),
                       validator: (value) {
                         if (value!.isEmpty) return '사업자번호는 필수입력입니다';
                         if (value.length > 0) {
@@ -187,9 +177,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '결제금액',
-                ),
+                decoration: InputDecoration(labelText: '결제금액'),
                 initialValue: '1000',
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -207,9 +195,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문번호',
-                ),
+                decoration: InputDecoration(labelText: '주문번호'),
                 validator: (value) => value!.isEmpty ? '주문번호는 필수입력입니다' : null,
                 initialValue: 'mid_${DateTime.now().millisecondsSinceEpoch}',
                 onSaved: (String? value) {
@@ -217,18 +203,14 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '이름',
-                ),
+                decoration: InputDecoration(labelText: '이름'),
                 initialValue: '홍길동',
                 onSaved: (String? value) {
                   buyerName = value!;
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '전화번호',
-                ),
+                decoration: InputDecoration(labelText: '전화번호'),
                 initialValue: '01012341234',
                 validator: (value) {
                   if (value!.length > 0) {
@@ -243,9 +225,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '이메일',
-                ),
+                decoration: InputDecoration(labelText: '이메일'),
                 initialValue: 'example@example.com',
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (String? value) {
@@ -337,18 +317,12 @@ class _PaymentTestState extends State<PaymentTest> {
                       }
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기
-                      data.period = {
-                        'from': '20230101',
-                        'to': '20231231',
-                      };
+                      data.period = {'from': '20230101', 'to': '20231231'};
 
                       data.popup = false;
                       Get.toNamed(
                         '/payment',
-                        arguments: {
-                          'userCode': userCode,
-                          'data': data,
-                        },
+                        arguments: {'userCode': userCode, 'data': data},
                       );
                     }
                   },

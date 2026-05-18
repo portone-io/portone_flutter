@@ -49,10 +49,9 @@ class IamportPayment extends StatelessWidget {
         redirectUrl = this.data.mRedirectUrl!;
       }
 
-      var init =
-          this.tierCode == null
-              ? 'IMP.init("${this.userCode}");'
-              : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
+      var init = this.tierCode == null
+          ? 'IMP.init("${this.userCode}");'
+          : 'IMP.agency("${this.userCode}", "${this.tierCode}");';
 
       return IamportWebView(
         type: ActionType.payment,
@@ -60,7 +59,9 @@ class IamportPayment extends StatelessWidget {
         initialChild: this.initialChild,
         gestureRecognizers: this.gestureRecognizers,
         executeJS: (InAppWebViewController controller) {
-          controller.evaluateJavascript(source: '''
+          controller.evaluateJavascript(
+            source:
+                '''
             $init
             IMP.request_pay(${jsonEncode(this.data.toJson())}, function(response) {
               const query = [];
@@ -69,7 +70,8 @@ class IamportPayment extends StatelessWidget {
               });
               location.href = "$redirectUrl" + "?" + query.join("&");
             });
-          ''');
+          ''',
+          );
         },
         customPGAction: (InAppWebViewController controller) {
           /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
@@ -90,9 +92,12 @@ class IamportPayment extends StatelessWidget {
                         niceTransRedirectionUrl = value;
                       }
                     });
-                    await controller.evaluateJavascript(source: '''
+                    await controller.evaluateJavascript(
+                      source:
+                          '''
                     location.href = "$niceTransRedirectionUrl?$queryToString";
-                  ''');
+                  ''',
+                    );
                   }
                 }
               });

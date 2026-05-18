@@ -7,10 +7,7 @@ class Tosspayments {
   bool? useInternationalCardOnly;
   String? discountCode;
 
-  Tosspayments({
-    this.useInternationalCardOnly,
-    this.discountCode,
-  });
+  Tosspayments({this.useInternationalCardOnly, this.discountCode});
 
   factory Tosspayments.fromJson(Map<String, dynamic> json) =>
       _$TosspaymentsFromJson(json);

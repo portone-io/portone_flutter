@@ -8,9 +8,7 @@ class Danal {
   @JsonKey(name: "ISCASHRECEIPTUI")
   String? isCashReceiptUi;
 
-  Danal({
-    this.isCashReceiptUi,
-  });
+  Danal({this.isCashReceiptUi});
 
   factory Danal.fromJson(Map<String, dynamic> json) => _$DanalFromJson(json);
 
