@@ -1,0 +1,12 @@
+onlyBuiltDependencies: []
+
+strictDepBuilds: true
+
+blockExoticSubdeps: true
+
+minimumReleaseAge: 10080
+
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 525960
+
+engineStrict: true

@@ -1,0 +1,113 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  changesets:
+    name: Create Release Pull Request
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # Required to push the version commit created by changesets/action.
+      pull-requests: write # Required to open or update the release pull request.
+    outputs:
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: 24
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf
+        with:
+          version: pnpm run version
+          commit: "ci: release"
+          title: "ci: release"
+          commitMode: github-api
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  tag:
+    name: Tag Release
+    needs: changesets
+    if: needs.changesets.outputs.hasChangesets == 'false'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # Required to create the tag and GitHub release.
+      actions: write # Required to dispatch the publish workflow.
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+
+      - name: Check package.json version changes
+        id: version-check
+        uses: EndBug/version-check@095362f3cd50f690c8fa0e6afeea81834bd8d320
+        with:
+          diff-search: true
+          file-name: package.json
+
+      - name: Extract release notes
+        if: steps.version-check.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.version-check.outputs.version }}
+        run: |
+          awk -v ver="## ${VERSION}" '
+            $0 == ver { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > RELEASE_NOTES.md
+          if [ ! -s RELEASE_NOTES.md ]; then
+            echo "See [CHANGELOG.md](./CHANGELOG.md) for details." > RELEASE_NOTES.md
+          fi
+
+      - name: Create GitHub release and tag
+        if: steps.version-check.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.version-check.outputs.version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${VERSION}" \
+            --target "${GITHUB_SHA}" \
+            --title "v${VERSION}" \
+            --notes-file RELEASE_NOTES.md
+
+      - name: Dispatch publish workflow
+        if: steps.version-check.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.version-check.outputs.version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if gh workflow run publish.yml --ref "v${VERSION}"; then
+              echo "Dispatched publish.yml on ref v${VERSION}"
+              exit 0
+            fi
+            echo "Attempt ${attempt} failed; retrying in 5s..."
+            sleep 5
+          done
+          echo "::error::Failed to dispatch publish.yml after 5 attempts"
+          exit 1
