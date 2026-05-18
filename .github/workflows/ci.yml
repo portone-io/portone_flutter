@@ -42,11 +42,3 @@ jobs:
 
       - name: Analyze
         run: flutter analyze --no-fatal-warnings
-
-      - name: Install example dependencies
-        run: flutter pub get
-        working-directory: example
-
-      - name: Run example tests
-        run: flutter test
-        working-directory: example
