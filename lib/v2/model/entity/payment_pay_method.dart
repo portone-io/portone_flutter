@@ -32,7 +32,10 @@ enum PaymentPayMethod {
   ALIPAY('ALIPAY'),
 
   /// 편의점 결제
-  CONVENIENCE_STORE('CONVENIENCE_STORE');
+  CONVENIENCE_STORE('CONVENIENCE_STORE'),
+
+  /// 알리페이 플러스
+  ALIPAY_PLUS('ALIPAY_PLUS');
 
   final String _value;
   const PaymentPayMethod(String value) : _value = value;

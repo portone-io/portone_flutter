@@ -14,6 +14,7 @@ import 'package:portone_flutter/v2/model/entity/bypass/payment/mobilians_v_2.dar
 import 'package:portone_flutter/v2/model/entity/bypass/payment/naverpay.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/nice_v_2.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/payletter_global.dart';
+import 'package:portone_flutter/v2/model/entity/bypass/payment/paymentwall.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/paypal_v_2.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/smartro_v_2.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/toss_brandpay.dart';
@@ -86,6 +87,9 @@ class PaymentBypass {
   /// Triple-A bypass 파라미터
   final TripleABypass? tripleA;
 
+  /// Paymentwall bypass 파라미터
+  final PaymentwallBypass? paymentwall;
+
   PaymentBypass({
     this.tosspayments,
     this.niceV2,
@@ -107,6 +111,7 @@ class PaymentBypass {
     this.payletterGlobal,
     this.mobiliansV2,
     this.tripleA,
+    this.paymentwall,
   });
 
   Map<String, dynamic> toJson() => {
@@ -130,5 +135,6 @@ class PaymentBypass {
     if (payletterGlobal != null) 'payletter_global': payletterGlobal!.toJson(),
     if (mobiliansV2 != null) 'mobilians_v2': mobiliansV2!.toJson(),
     if (tripleA != null) 'triple_a': tripleA!.toJson(),
+    if (paymentwall != null) 'paymentwall': paymentwall!.toJson(),
   };
 }
