@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  verify:
+    name: Analyze & Test
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Verify generated files are up to date
+        run: |
+          dart run build_runner build --delete-conflicting-outputs
+          if ! git diff --exit-code; then
+            echo "::error::Generated files are out of date. Run 'dart run build_runner build --delete-conflicting-outputs' and commit the result."
+            exit 1
+          fi
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-warnings
+
+      - name: Install example dependencies
+        run: flutter pub get
+        working-directory: example
+
+      - name: Run example tests
+        run: flutter test
+        working-directory: example
