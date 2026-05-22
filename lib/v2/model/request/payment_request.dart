@@ -225,6 +225,9 @@ class PaymentRequest {
   /// 포트원의 프로모션 기능 이용시 지정합니다.
   final String? promotionId;
 
+  /// **Merpay 상품 카테고리 ID**
+  final String? merpayCategoryId;
+
   /// **팝업 관련 필드**
   ///
   /// UI가 팝업 창으로 열릴 때 적용되는 속성입니다.
@@ -285,6 +288,7 @@ class PaymentRequest {
     this.storeDetails,
     this.shippingAddress,
     this.promotionId,
+    this.merpayCategoryId,
     this.popup,
     this.iframe,
     this.bypass,
@@ -329,6 +333,7 @@ class PaymentRequest {
     if (storeDetails != null) 'storeDetails': storeDetails!.toJson(),
     if (shippingAddress != null) 'shippingAddress': shippingAddress!.toJson(),
     if (promotionId != null) 'promotionId': promotionId!,
+    if (merpayCategoryId != null) 'merpayCategoryId': merpayCategoryId!,
     if (popup != null) 'popup': popup!.toJson(),
     if (iframe != null) 'iframe': iframe!.toJson(),
     if (bypass != null) 'bypass': bypass!.toJson(),
