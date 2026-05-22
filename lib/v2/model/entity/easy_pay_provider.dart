@@ -88,7 +88,13 @@ enum EasyPayProvider {
   /// - 나이스페이먼츠
   /// - KG이니시스
   /// - NHN KCP
+  /// - 헥토파이낸셜 해외결제
   APPLEPAY('APPLEPAY'),
+
+  /// 구글페이
+  ///
+  /// - 헥토파이낸셜 해외결제
+  GOOGLE_PAY('GOOGLE_PAY'),
 
   /// LG페이
   ///
@@ -124,6 +130,7 @@ enum EasyPayProvider {
   /// PayPay
   ///
   /// - KG이니시스 JPPG/SBPS 일본결제
+  /// - 헥토파이낸셜 해외결제
   PAYPAY('PAYPAY'),
 
   /// 아마존페이
@@ -134,6 +141,7 @@ enum EasyPayProvider {
   /// 라쿠텐페이
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   RAKUTENPAY('RAKUTENPAY'),
 
   /// dBarai
@@ -144,11 +152,13 @@ enum EasyPayProvider {
   /// auPAY
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   AUPAY('AUPAY'),
 
   /// Merpay
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   MERPAY('MERPAY'),
 
   /// Alipay
