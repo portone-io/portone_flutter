@@ -68,6 +68,12 @@ class _PortoneWebViewState extends State<PortoneWebView> {
         }
       },
       child: Scaffold(
+        // bugfix: Scroll issue on iOS when focusing on a text field in WebView.
+        // Mirror of PR #143 (V1 IamportWebView fix) for V2 PortoneWebView.
+        // Without this, virtual keyboard appearance shifts the entire WebView
+        // upward causing input field to be hidden behind keyboard accessory bar.
+        // See issue #123.
+        resizeToAvoidBottomInset: false,
         appBar: widget.appBar,
         body: SafeArea(
           child: IndexedStack(
