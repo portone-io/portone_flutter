@@ -77,6 +77,16 @@ class _PortoneWebViewState extends State<PortoneWebView> {
                 initialSettings: InAppWebViewSettings(
                   useShouldOverrideUrlLoading: true,
                   resourceCustomSchemes: ["intent"],
+                  // iOS keyboard handling fix — flutter_inappwebview defaults
+                  // `contentInsetAdjustmentBehavior` to NEVER (vs Apple iOS
+                  // native default `automatic`). NEVER prevents WKWebView's
+                  // scrollView from auto-adjusting bottom contentInset when
+                  // the keyboard appears, so focused inputs (e.g. PASS
+                  // security text) stay hidden behind the keyboard. AUTOMATIC
+                  // restores native scroll-to-focus behavior.
+                  contentInsetAdjustmentBehavior:
+                      ScrollViewContentInsetAdjustmentBehavior.AUTOMATIC,
+                  automaticallyAdjustsScrollIndicatorInsets: true,
                 ),
                 gestureRecognizers: widget.gestureRecognizers,
                 onWebViewCreated: (controller) {
