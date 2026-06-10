@@ -122,6 +122,45 @@ class _PortoneWebViewState extends State<PortoneWebView> {
                     widget.executeJS(controller);
                     _isSDKLoaded++;
                   }
+                  // iOS WKWebView keyboard fix — `contentInsetAdjustmentBehavior:
+                  // AUTOMATIC` alone doesn't reliably scroll focused inputs into
+                  // view for the Danal 보안문자 (security character) field which
+                  // sits low in the page. This JS listens for `focusin` events,
+                  // waits ~350ms for the keyboard frame to finalize, then calls
+                  // `scrollIntoView({block: 'center'})` to bring the focused
+                  // input into the visible area above the keyboard.
+                  //
+                  // Pattern reference: Klarna/Stripe embedded WebView checkouts.
+                  // Idempotent via window.__portoneScrollFix flag — safe on every
+                  // load_stop (Danal's multi-page identity verification flow
+                  // re-navigates several times).
+                  //
+                  // Background: WKWebView since iOS 12 stopped auto-resizing the
+                  // viewport when the keyboard appears. Synchronous scrollIntoView
+                  // on focusin runs BEFORE iOS finalizes the keyboard frame, so
+                  // setTimeout(350) is required for the browser to compute against
+                  // the post-keyboard viewport.
+                  //
+                  // Related: flutter/flutter#140953, #98090, #112354, WebKit #142757
+                  controller.evaluateJavascript(source: r'''
+(function() {
+  if (window.__portoneScrollFix) return;
+  window.__portoneScrollFix = true;
+  document.addEventListener('focusin', function(e) {
+    var el = e.target;
+    if (!el || !el.tagName) return;
+    var t = el.tagName.toLowerCase();
+    if (t !== 'input' && t !== 'textarea') return;
+    setTimeout(function() {
+      try {
+        el.scrollIntoView({block: 'center', behavior: 'smooth'});
+      } catch (_) {
+        el.scrollIntoView(false);
+      }
+    }, 350);
+  }, true);
+})();
+''');
                 },
                 onLoadResourceWithCustomScheme: (controller, resource) async {
                   await controller.stopLoading();
