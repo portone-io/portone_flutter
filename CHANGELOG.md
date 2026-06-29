@@ -1,5 +1,11 @@
 # portone_flutter
 
+## 1.0.3
+
+### Patch Changes
+
+- [#174](https://github.com/portone-io/portone_flutter/pull/174) [`9260cee`](https://github.com/portone-io/portone_flutter/commit/9260cee8a37f149f1eeee87569efeb8476fe3969) Thanks [@CirnoV](https://github.com/CirnoV)! - `@portone/browser-sdk` v0.1.9 릴리즈에 따라 타입을 동기화합니다.
+
 ## 1.0.2
 
 ### Patch Changes
