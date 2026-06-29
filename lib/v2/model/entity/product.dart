@@ -34,6 +34,9 @@ class Product {
   /// **상품 판매 URL**
   final String? link;
 
+  /// **상품 설명**
+  final String? description;
+
   Product({
     required this.id,
     required this.name,
@@ -42,6 +45,7 @@ class Product {
     required this.quantity,
     this.tag,
     this.link,
+    this.description,
   });
 
   Map<String, dynamic> toJson() => {
@@ -52,5 +56,6 @@ class Product {
     'quantity': quantity,
     if (tag != null) 'tag': tag!,
     if (link != null) 'link': link!,
+    if (description != null) 'description': description!,
   };
 }
