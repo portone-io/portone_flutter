@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:portone_flutter/v1/model/iamport_url.dart';
 
 class PortoneWebView extends StatefulWidget {
   static final String html = '''
@@ -121,34 +121,13 @@ class _PortoneWebViewState extends State<PortoneWebView> {
                     return NavigationActionPolicy.CANCEL;
                   }
 
-                  var colon = uri.indexOf(':');
-                  var protocol = uri.substring(0, colon);
-                  switch (protocol) {
-                    case 'http':
-                    case 'https':
-                      return NavigationActionPolicy.ALLOW;
-                    case 'intent':
-                      var firstHash = uri.indexOf('#');
-                      String? scheme;
-                      for (var param
-                          in uri.substring(firstHash + 1).split(';')) {
-                        var keyValue = param.split('=');
-                        if (keyValue.length >= 2 && keyValue[0] == 'scheme') {
-                          scheme = keyValue[1];
-                        }
-                      }
-                      var redirect =
-                          '${scheme != null ? '$scheme:' : ''}${uri.substring(colon + 1, firstHash)}';
-                      if (await canLaunchUrlString(redirect)) {
-                        launchUrlString(redirect);
-                      }
-                      return NavigationActionPolicy.CANCEL;
-                    default:
-                      if (await canLaunchUrlString(uri)) {
-                        launchUrlString(uri);
-                      }
-                      return NavigationActionPolicy.CANCEL;
+                  final iamportUrl = IamportUrl(uri);
+                  if (iamportUrl.isAppLink()) {
+                    iamportUrl.launchApp();
+                    return NavigationActionPolicy.CANCEL;
                   }
+
+                  return NavigationActionPolicy.ALLOW;
                 },
               ),
               if (_isWebviewLoaded == 1) widget.initialChild!,

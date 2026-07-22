@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:portone_flutter/v1/model/url_data.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -18,7 +18,7 @@ class IamportUrl {
         .split(' ');
     this.appScheme = splittedUrl[0];
 
-    if (Platform.isAndroid) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
       /*
         Android scheme은 크게 3가지 형태
         1. intent://
@@ -26,35 +26,39 @@ class IamportUrl {
         3. intent:[app]://
         이 세가지를 정상적으로 launch가 가능한 2번 형태로 변환한다
       */
-      if (this.isAppLink()) {
-        if (this.appScheme!.contains('intent')) {
-          List<String> intentUrl = splittedUrl[1].split('#Intent;');
-          String host = intentUrl[0];
-          // 농협카드 일반결제 예외처리
-          if (host.contains(':')) {
-            host = host.replaceAll(RegExp(r':'), '%3A');
-          }
-          List<String> arguments = intentUrl[1].split(';');
+      if (this.isAppLink() &&
+          this._isIntentScheme() &&
+          splittedUrl.length > 1) {
+        List<String> intentUrl = splittedUrl[1].split('#Intent;');
+        String host = intentUrl[0];
+        // 농협카드 일반결제 예외처리
+        if (host.contains(':')) {
+          host = host.replaceAll(RegExp(r':'), '%3A');
+        }
 
-          // scheme이 intent로 시작하면 뒷쪽의 정보를 통해 appscheme과 package 정보 추출
-          if (this.appScheme! != 'intent') {
-            // 현대카드 예외처리
-            this.appScheme = this.appScheme!.split(':')[1];
-            this.appUrl = this.appScheme! + '://' + host;
-          }
-          arguments.forEach((s) {
-            if (s.startsWith('scheme')) {
-              String scheme = s.split('=')[1];
-              this.appUrl = scheme + '://' + host;
-              this.appScheme = scheme;
-            } else if (s.startsWith('package')) {
-              String package = s.split('=')[1];
-              this.package = package;
+        // scheme이 intent로 시작하면 뒷쪽의 정보를 통해 appscheme과 package 정보 추출
+        if (this.appScheme! != 'intent') {
+          // 현대카드 예외처리
+          this.appScheme = this.appScheme!.split(':')[1];
+          this.appUrl = this.appScheme! + '://' + host;
+        }
+        if (intentUrl.length > 1) {
+          intentUrl[1].split(';').forEach((s) {
+            int separator = s.indexOf('=');
+            if (separator < 0) {
+              return;
+            }
+            String key = s.substring(0, separator);
+            String value = s.substring(separator + 1);
+            if (key == 'scheme') {
+              this.appUrl = value + '://' + host;
+              this.appScheme = value;
+            } else if (key == 'package') {
+              this.package = value;
             }
           });
-        } else {
-          this.appUrl = this.url;
         }
+        this.appUrl ??= this.url;
       } else {
         this.appUrl = this.url;
       }
@@ -62,6 +66,10 @@ class IamportUrl {
       this.appUrl = this.url;
     }
   }
+
+  bool _isIntentScheme() =>
+      this.appScheme == 'intent' ||
+      (this.appScheme?.startsWith('intent:') ?? false);
 
   bool isAppLink() {
     String? scheme;
@@ -71,7 +79,8 @@ class IamportUrl {
       scheme = this.appScheme;
     }
 
-    if (Platform.isAndroid && this.appScheme == 'https') {
+    if (defaultTargetPlatform == TargetPlatform.android &&
+        this.appScheme == 'https') {
       if (this.url.startsWith(
         'https://play.google.com/store/apps/details?id=',
       )) {
@@ -87,7 +96,7 @@ class IamportUrl {
   }
 
   Future<String?> getMarketUrl() async {
-    if (Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       switch (this.appScheme) {
         case 'kftc-bankpay': // 뱅크페이
           return UrlData.IOS_MARKET_PREFIX + 'id398456030';
@@ -146,7 +155,7 @@ class IamportUrl {
         default:
           return this.url;
       }
-    } else if (Platform.isAndroid) {
+    } else if (defaultTargetPlatform == TargetPlatform.android) {
       if (this.package != null) {
         // 앱이 설치되어 있지 않아 실행 불가능할 경우 추출된 package 정보를 이용해 플레이스토어 열기
         return UrlData.ANDROID_MARKET_PREFIX + this.package!;
@@ -227,14 +236,21 @@ class IamportUrl {
 
   Future<bool> launchApp() async {
     bool opened = false;
-    String appUrl = (await this.getAppUrl())!;
+    String? appUrl = await this.getAppUrl();
 
-    try {
-      opened = await launchUrlString(appUrl);
-    } catch (e) {}
+    if (appUrl != null) {
+      try {
+        opened = await launchUrlString(appUrl);
+      } catch (e) {}
+    }
 
     if (!opened) {
-      opened = await launchUrlString((await this.getMarketUrl())!);
+      String? marketUrl = await this.getMarketUrl();
+      if (marketUrl != null && marketUrl != appUrl) {
+        try {
+          opened = await launchUrlString(marketUrl);
+        } catch (e) {}
+      }
     }
 
     return opened;
