@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:portone_flutter/v2/model/request/payment_request.dart';
 import 'package:portone_flutter/v2/model/entity/payment_pay_method.dart';
 import 'package:portone_flutter/v2/model/entity/currency.dart';
+import 'package:portone_flutter/v2/model/entity/customer.dart';
 
 class V2PaymentTest extends StatefulWidget {
   @override
@@ -18,6 +19,9 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
   late String amount;
   late String paymentId;
   late String appScheme;
+  String? customerFullName;
+  String? customerPhoneNumber;
+  String? customerEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +113,29 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                 },
               ),
               TextFormField(
+                decoration: InputDecoration(labelText: '구매자 이름 (선택)'),
+                initialValue: '',
+                onSaved: (String? value) {
+                  customerFullName = value!.isEmpty ? null : value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: '구매자 휴대전화 번호 (선택)'),
+                initialValue: '',
+                keyboardType: TextInputType.phone,
+                onSaved: (String? value) {
+                  customerPhoneNumber = value!.isEmpty ? null : value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: '구매자 이메일 (선택)'),
+                initialValue: '',
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (String? value) {
+                  customerEmail = value!.isEmpty ? null : value;
+                },
+              ),
+              TextFormField(
                 decoration: InputDecoration(labelText: 'App Scheme'),
                 validator: (value) =>
                     value!.isEmpty ? 'App Scheme은 필수입력입니다' : null,
@@ -124,6 +151,17 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
 
+                      Customer? customer;
+                      if (customerFullName != null ||
+                          customerPhoneNumber != null ||
+                          customerEmail != null) {
+                        customer = Customer(
+                          fullName: customerFullName,
+                          phoneNumber: customerPhoneNumber,
+                          email: customerEmail,
+                        );
+                      }
+
                       PaymentRequest data = PaymentRequest(
                         storeId: storeId,
                         channelKey: channelKey,
@@ -133,6 +171,7 @@ class _V2PaymentTestState extends State<V2PaymentTest> {
                         currency: Currency.KRW,
                         paymentId: paymentId,
                         appScheme: appScheme,
+                        customer: customer,
                       );
 
                       Get.toNamed('/v2-payment', arguments: {'data': data});
