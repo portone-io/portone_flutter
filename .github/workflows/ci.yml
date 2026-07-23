@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        uses: portone-io/flutter-action@a762656fdb1095ef947e0dcac6472d4ccb1e9934
         with:
           channel: stable
 
