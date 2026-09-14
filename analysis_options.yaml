@@ -4,3 +4,8 @@ analyzer:
     - lib/v2/model/**
     # json_serializable output.
     - lib/**/*.g.dart
+    # Added by `flutter pub get` on Flutter 3.47+; kept committed so CI's
+    # `git diff --exit-code` check stays clean.
+    - build/**
+    - android/**
+    - ios/**
