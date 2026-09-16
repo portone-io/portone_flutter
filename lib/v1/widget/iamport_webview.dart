@@ -143,7 +143,9 @@ class _IamportWebViewState extends State<IamportWebView> {
                   return NavigationActionPolicy.CANCEL;
                 }
 
-                final iamportUrl = IamportUrl(url);
+                final iamportUrl = IamportUrl(
+                  navigationAction.request.url?.rawValue ?? url,
+                );
                 if (iamportUrl.isAppLink()) {
                   iamportUrl.launchApp();
                   return NavigationActionPolicy.CANCEL;
