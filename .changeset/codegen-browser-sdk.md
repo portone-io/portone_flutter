@@ -2,4 +2,4 @@
 "portone_flutter": patch
 ---
 
-`@portone/browser-sdk` v0.1.10 릴리즈에 따라 타입을 동기화합니다.
+`@portone/browser-sdk` v0.1.11 릴리즈에 따라 타입을 동기화합니다.

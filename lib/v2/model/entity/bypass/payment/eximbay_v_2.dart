@@ -4,6 +4,7 @@
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_bill_to.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_merchant.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_payment.dart';
+import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_paypal.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_settings.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_ship_to.dart';
 import 'package:portone_flutter/v2/model/entity/bypass/payment/eximbay_v_2_surcharge.dart';
@@ -29,6 +30,9 @@ class EximbayV2Bypass {
   /// 청구지 정보
   final EximbayV2BillTo? billTo;
 
+  /// 페이팔 정보
+  final EximbayV2Paypal? paypal;
+
   /// 설정 정보
   final EximbayV2Settings? settings;
 
@@ -39,6 +43,7 @@ class EximbayV2Bypass {
     this.surcharge,
     this.shipTo,
     this.billTo,
+    this.paypal,
     this.settings,
   });
 
@@ -50,6 +55,7 @@ class EximbayV2Bypass {
       'surcharge': surcharge!.map((e) => e.toJson()).toList(),
     if (shipTo != null) 'ship_to': shipTo!.toJson(),
     if (billTo != null) 'bill_to': billTo!.toJson(),
+    if (paypal != null) 'paypal': paypal!.toJson(),
     if (settings != null) 'settings': settings!.toJson(),
   };
 }

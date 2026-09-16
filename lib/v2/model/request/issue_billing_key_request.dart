@@ -42,7 +42,7 @@ class IssueBillingKeyRequest {
   final String? channelKey;
 
   /// 빌링키 발급 수단
-  final BillingKeyMethod billingKeyMethod;
+  final BillingKeyMethod? billingKeyMethod;
 
   /// 빌링키 발급 주문 명
   final String? issueName;
@@ -144,7 +144,7 @@ class IssueBillingKeyRequest {
     this.currency,
     required this.storeId,
     this.channelKey,
-    required this.billingKeyMethod,
+    this.billingKeyMethod,
     this.issueName,
     this.issueId,
     this.customer,
@@ -170,7 +170,8 @@ class IssueBillingKeyRequest {
     if (currency != null) 'currency': currency!.toJson(),
     'storeId': storeId,
     if (channelKey != null) 'channelKey': channelKey!,
-    'billingKeyMethod': billingKeyMethod.toJson(),
+    if (billingKeyMethod != null)
+      'billingKeyMethod': billingKeyMethod!.toJson(),
     if (issueName != null) 'issueName': issueName!,
     if (issueId != null) 'issueId': issueId!,
     if (customer != null) 'customer': customer!.toJson(),
