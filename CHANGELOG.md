@@ -1,5 +1,13 @@
 # portone_flutter
 
+## 1.0.5
+
+### Patch Changes
+
+- [#185](https://github.com/portone-io/portone_flutter/pull/185) [`b7ddf57`](https://github.com/portone-io/portone_flutter/commit/b7ddf5712d9c03626006e1f76392745b737d79ef) Thanks [@CirnoV](https://github.com/CirnoV)! - `@portone/browser-sdk` v0.1.11 릴리즈에 따라 타입을 동기화합니다.
+
+- [#190](https://github.com/portone-io/portone_flutter/pull/190) [`249641a`](https://github.com/portone-io/portone_flutter/commit/249641ac93806fe3bf7c06d84e6d784cbb6cdc6c) Thanks [@CirnoV](https://github.com/CirnoV)! - V1 결제·본인인증 웹뷰에서 외부 앱에 전달하는 URL의 원본 대소문자를 보존합니다.
+
 ## 1.0.4
 
 ### Patch Changes
