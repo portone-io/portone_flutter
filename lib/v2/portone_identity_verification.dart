@@ -16,6 +16,9 @@ class PortoneIdentityVerification extends StatelessWidget {
   final String appScheme;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
+  /// See [PortoneWebView.onWillLeave].
+  final Future<bool> Function()? onWillLeave;
+
   PortoneIdentityVerification({
     Key? key,
     this.appBar,
@@ -24,6 +27,7 @@ class PortoneIdentityVerification extends StatelessWidget {
     required this.callback,
     this.appScheme = 'portone',
     this.gestureRecognizers,
+    this.onWillLeave,
   }) : super(key: key);
 
   @override
@@ -38,6 +42,7 @@ class PortoneIdentityVerification extends StatelessWidget {
       appBar: appBar,
       initialChild: initialChild,
       gestureRecognizers: gestureRecognizers,
+      onWillLeave: onWillLeave,
       redirectUrl: redirectUrl,
       executeJS: (InAppWebViewController controller) {
         controller.evaluateJavascript(
