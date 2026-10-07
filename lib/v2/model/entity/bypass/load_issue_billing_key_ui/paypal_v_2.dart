@@ -9,6 +9,16 @@ import 'package:portone_flutter/v2/model/entity/bypass/load_issue_billing_key_ui
 class PaypalV2LoadIssueBillingKeyUIBypass {
   /// 페이팔 빌링키 발급 UI 호출 시 필요한 파라미터
   final PaypalV2Style? style;
+
+  /// 허용할 결제 수단 (예: "paylater,venmo")
+  ///
+  /// 전달할 수 있는 값은 https://developer.paypal.com/sdk/js/v5/configuration#enable-funding 을 참고하세요.
+  final String? enableFunding;
+
+  /// 차단할 결제 수단 (예: "credit,paylater")
+  ///
+  /// 전달할 수 있는 값은 https://developer.paypal.com/sdk/js/v5/configuration#disable-funding 을 참고하세요.
+  final String? disableFunding;
   final PaypalV2ShippingAddress? shippingAddress;
 
   /// STC 파라미터
@@ -16,12 +26,16 @@ class PaypalV2LoadIssueBillingKeyUIBypass {
 
   PaypalV2LoadIssueBillingKeyUIBypass({
     this.style,
+    this.enableFunding,
+    this.disableFunding,
     this.shippingAddress,
     this.additionalData,
   });
 
   Map<String, dynamic> toJson() => {
     if (style != null) 'style': style!.toJson(),
+    if (enableFunding != null) 'enable-funding': enableFunding!,
+    if (disableFunding != null) 'disable-funding': disableFunding!,
     if (shippingAddress != null) 'shipping_address': shippingAddress!.toJson(),
     if (additionalData != null)
       'additional_data': additionalData!.map((e) => e.toJson()).toList(),
