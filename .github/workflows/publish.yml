@@ -63,7 +63,7 @@ jobs:
           flutter-version: 3.38.x
 
       - name: Setup Dart (for pub.dev OIDC)
-        uses: dart-lang/setup-dart@7654d458321ee25acccccfdb86cd48bd95768ff1
+        uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
 
       - name: Install dependencies
         run: flutter pub get
