@@ -13,6 +13,7 @@
   - 공통 사항
   - IOS 설정하기
   - Android 설정하기
+    - Android Gradle Plugin 9 이상
   - [실시간 계좌이체 설정하기](example/manuals/TRANS.md)
 - [예제](example/README.md)
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
@@ -28,8 +29,10 @@
 
 ```
 dependencies:
-  portone_flutter: ^1.0.1
+  portone_flutter: ^1.1.0
 ```
+
+Flutter 3.44 / Dart 3.12 이상이 필요합니다.
 
 ## 설정하기
 
@@ -168,6 +171,15 @@ CertificationData data = CertificationData(
     </application>
 </manifest>
 ```
+
+#### Android Gradle Plugin 9 이상
+Android Gradle Plugin(AGP) 9 이상에서는 `flutter_inappwebview_android`가 사용하는 `proguard-android.txt` 때문에 빌드가 실패합니다. 앱의 `android/gradle.properties` 파일에 아래 설정을 추가해주세요.
+
+```properties
+android.r8.proguardAndroidTxt.disallowed=false
+```
+
+이 설정은 AGP 10에서 제거될 예정인 임시 설정입니다. `flutter_inappwebview`의 수정된 정식 버전이 배포되면 이 설정을 삭제해주세요. ([flutter_inappwebview#2852](https://github.com/pichillilorenzo/flutter_inappwebview/issues/2852))
 
 ### 실시간 계좌이체 설정하기
 웹 표준 이니시스와 나이스 정보통신은 뱅크페이 앱을 통해 실시간 계좌이체를 진행합니다. 뱅크페이에서 결제 인증 후 본래의 앱으로 복귀 해 다음단계로 진행을 하려면 별도 설정이 요구됩니다. 자세한 내용은 [실시간 계좌이체 설정하기](example/manuals/TRANS.md)를 참고해주세요.

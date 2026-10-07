@@ -1,5 +1,5 @@
-group 'io.portone.portone_flutter'
-version '1.0-SNAPSHOT'
+group = 'io.portone.portone_flutter'
+version = '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '2.1.0'
@@ -22,10 +22,9 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 34
+    compileSdk = 36
 
     namespace = 'io.portone.portone_flutter'
 
@@ -33,23 +32,25 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 23
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = 23
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-
-    dependencies {
-        implementation 'androidx.annotation:annotation:1.8.0'
+    lint {
+        disable.add('InvalidPackage')
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+}
 
-    kotlinOptions {
-        jvmTarget = "17"
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.8.0'
 }
