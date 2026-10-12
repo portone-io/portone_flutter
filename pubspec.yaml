@@ -4,8 +4,8 @@ version: 1.0.5
 homepage: https://github.com/portone-io/portone_flutter
 
 environment:
-  sdk: ^3.10.0
-  flutter: ">=3.38.1"
+  sdk: ^3.12.0
+  flutter: ">=3.44.0"
 
 dependencies:
   flutter:

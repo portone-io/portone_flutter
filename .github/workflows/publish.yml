@@ -60,13 +60,13 @@ jobs:
         uses: portone-io/flutter-action@a762656fdb1095ef947e0dcac6472d4ccb1e9934
         with:
           channel: stable
-          flutter-version: 3.38.x
+          flutter-version: 3.44.x
 
       - name: Setup Dart (for pub.dev OIDC)
         uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
 
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub get --no-example
 
       - name: Dry-run publish
         run: dart pub publish --dry-run
