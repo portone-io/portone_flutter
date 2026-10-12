@@ -19,7 +19,7 @@ jobs:
       contents: write # Required to push the version commit created by changesets/action.
       pull-requests: write # Required to open or update the release pull request.
     outputs:
-      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
+      hasChangesets: ${{ steps.changesets.outputs.has-changesets }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -41,12 +41,9 @@ jobs:
         id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51
         with:
-          version: pnpm run version
-          commit: "ci: release"
-          title: "ci: release"
-          commitMode: github-api
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          version-script: pnpm run version
+          commit-message: "ci: release"
+          pr-title: "ci: release"
 
   tag:
     name: Tag Release
