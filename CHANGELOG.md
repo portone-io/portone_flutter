@@ -1,5 +1,11 @@
 # portone_flutter
 
+## 1.1.1
+
+### Patch Changes
+
+- [#199](https://github.com/portone-io/portone_flutter/pull/199) [`efb5fac`](https://github.com/portone-io/portone_flutter/commit/efb5face4e1cf665d44670dc09f5eec3862ec576) Thanks [@github-actions](https://github.com/apps/github-actions)! - iOS 웹뷰에서 키보드가 입력창을 가리거나 화면이 아래로 밀리던 문제를 수정합니다.
+
 ## 1.1.0
 
 ### Minor Changes
