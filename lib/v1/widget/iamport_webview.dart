@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:portone_flutter/src/keyboard_reveal_script.dart';
 import 'package:portone_flutter/src/subframe_navigation.dart';
 import 'package:portone_flutter/v1/model/iamport_url.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -90,6 +91,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 userAgent: widget.customUserAgent ?? null,
                 regexToCancelSubFramesLoading: nonWebSubFrameUrlRegex,
               ),
+              initialUserScripts: keyboardRevealUserScripts,
               gestureRecognizers: widget.gestureRecognizers,
               onWebViewCreated: (controller) {
                 this._webViewController = controller;
