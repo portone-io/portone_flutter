@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:portone_flutter/src/subframe_navigation.dart';
 import 'package:portone_flutter/v1/model/iamport_url.dart';
 
 class PortoneWebView extends StatefulWidget {
@@ -77,6 +78,7 @@ class _PortoneWebViewState extends State<PortoneWebView> {
                 initialSettings: InAppWebViewSettings(
                   useShouldOverrideUrlLoading: true,
                   resourceCustomSchemes: ["intent"],
+                  regexToCancelSubFramesLoading: nonWebSubFrameUrlRegex,
                 ),
                 gestureRecognizers: widget.gestureRecognizers,
                 onWebViewCreated: (controller) {

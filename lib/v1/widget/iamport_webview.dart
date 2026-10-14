@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:portone_flutter/src/subframe_navigation.dart';
 import 'package:portone_flutter/v1/model/iamport_url.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -87,6 +88,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 mixedContentMode: MixedContentMode.MIXED_CONTENT_ALWAYS_ALLOW,
                 thirdPartyCookiesEnabled: true,
                 userAgent: widget.customUserAgent ?? null,
+                regexToCancelSubFramesLoading: nonWebSubFrameUrlRegex,
               ),
               gestureRecognizers: widget.gestureRecognizers,
               onWebViewCreated: (controller) {
