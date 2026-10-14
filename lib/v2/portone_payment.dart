@@ -15,6 +15,9 @@ class PortonePayment extends StatelessWidget {
   final void Function(PaymentResponse response) callback;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
+  /// See [PortoneWebView.onWillLeave].
+  final Future<bool> Function()? onWillLeave;
+
   PortonePayment({
     Key? key,
     this.appBar,
@@ -22,6 +25,7 @@ class PortonePayment extends StatelessWidget {
     required this.data,
     required this.callback,
     this.gestureRecognizers,
+    this.onWillLeave,
   }) : super(key: key);
 
   @override
@@ -36,6 +40,7 @@ class PortonePayment extends StatelessWidget {
       appBar: appBar,
       initialChild: initialChild,
       gestureRecognizers: gestureRecognizers,
+      onWillLeave: onWillLeave,
       redirectUrl: redirectUrl,
       executeJS: (InAppWebViewController controller) {
         controller.evaluateJavascript(
