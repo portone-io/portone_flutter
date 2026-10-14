@@ -1,5 +1,13 @@
 # portone_flutter
 
+## 1.1.1
+
+### Patch Changes
+
+- [`198a1f0`](https://github.com/portone-io/portone_flutter/commit/198a1f00dc3f331eaf1edd51df7e5c4e40fc98cb) Thanks [@CirnoV](https://github.com/CirnoV)! - Android 웹뷰에서 iframe 안의 카드사 앱 호출(KB국민카드 등)이 ERR_UNKNOWN_URL_SCHEME 에러 페이지로 바뀌어 결제가 끊기던 문제를 수정합니다.
+
+- [`836d5fc`](https://github.com/portone-io/portone_flutter/commit/836d5fcf71563f6414a4edbf53bc3948e6786835) Thanks [@CirnoV](https://github.com/CirnoV)! - iOS 웹뷰에서 키보드가 입력창을 가리거나 화면이 아래로 밀리던 문제를 수정합니다.
+
 ## 1.1.0
 
 ### Minor Changes
