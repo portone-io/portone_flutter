@@ -21,6 +21,6 @@ class IdentityVerificationBypass {
   Map<String, dynamic> toJson() => {
     if (danal != null) 'danal': danal!.toJson(),
     if (inicisUnified != null) 'inicisUnified': inicisUnified!.toJson(),
-    if (kcpV2 != null) 'kcpV2': kcpV2!.toJson(),
+    if (kcpV2 != null) 'kcp_v2': kcpV2!.toJson(),
   };
 }
