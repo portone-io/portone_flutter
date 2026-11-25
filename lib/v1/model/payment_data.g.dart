@@ -26,9 +26,9 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
   buyerAddr: json['buyer_addr'] as String?,
   buyerPostcode: json['buyer_postcode'] as String?,
   noticeUrl: json['notice_url'] as String?,
-  cardQuota: PaymentData._cardQuotaFromJson(
-    json['display'] as Map<String, dynamic>,
-  ),
+  cardQuota: json['display'] == null
+      ? null
+      : PaymentData._cardQuotaFromJson(json['display'] as Map<String, dynamic>),
   digital: json['digital'] as bool?,
   vbankDue: json['vbank_due'] as String?,
   confirmUrl: json['confirm_url'] as String?,
